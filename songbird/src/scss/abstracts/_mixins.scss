@@ -1,0 +1,41 @@
+@mixin flex-row($justify: space-between, $align: center) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flex-column($justify: space-between, $align: center) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+//---------------transition
+
+@mixin transition {
+    transition: all 0.3s ease-in-out;
+}
+
+
+//-------------------media
+
+@mixin medium {
+  @media (max-width: (768px)) { 
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: (576px)) { 
+    @content;
+  }
+}
+
+@mixin extra-small {
+  @media (max-width: (430px)) { 
+    @content;
+  }
+}
+

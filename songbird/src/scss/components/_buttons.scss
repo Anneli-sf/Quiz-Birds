@@ -1,7 +1,76 @@
 .button {
-    margin: 20px 20px;
-    max-width: 250px;
+  margin: 1.25rem;
+  // max-width: 130px;
+  width: 100%;
+  // max-height: 40px;
+  height: 100%;
+  border-radius: 5px;
+  padding: 0.6rem 1rem;
+
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: inherit;
+
+  // background: transparent;
+  // border: none;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  z-index: 10;
+}
+
+.header-btn {
+  max-width: 8.2rem;
+  max-height: 2.5rem;
+  // width: 130px;
+  // height: 40px;
+  color: #fff;
+  box-shadow: inset 0px 1px 1px 0px rgb(255 255 255 / 50%),
+    7px 7px 9px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
+  background: linear-gradient(0deg, $colorMainDark 0%, #1d2641 100%);
+  // display: inline-block;
+  // @include transition-800();
+  // z-index: 10;
+
+  &.hidden {
+    opacity: 0;
+    z-index: -10;
+    // display: none;
+    // @include transition-800();
+  }
+
+  &:hover {
+    color: $colorMainDark;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: $colorMainDark;
+    box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003,
+      4px 4px 5px 0px #0002;
+    @include transition-400();
+  }
+
+  &:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+  }
+  &:hover:before,
+  &:hover:after {
     width: 100%;
-    max-height: 25px;
-    height: 100%;
+    @include transition-800();
+  }
 }

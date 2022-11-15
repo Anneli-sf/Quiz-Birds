@@ -1,7 +1,36 @@
 .footer {
-    width: 100%;
-    max-height: 100px;
-    height: 100%;
-    background-color: black;
-    @include flex-row($justify: center);
+  width: 100%;
+  max-height: 5rem;
+  height: 100%;
+  @include flex-row($justify: center);
+
+  .footer-link {
+    display: block;
+
+    .footer-img {
+      max-height: 2.5rem;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .year {
+    color: $colorMainDark;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 }
+
+// <div class="footer-items items">
+// <div class="footer-item">
+//   <a href="https://github.com/Anneli-sf" class="footer-link" target="_blank">
+//     <img class="footer-img" src="./assets/svg/github.png" alt="git-hub-logo">
+//   </a>
+
+// </div>
+// <div class="footer-item">
+//   <p class="year">	&#169; 2022</p>
+// </div>
+// <div class="footer-item">
+//   <a href="https://rs.school/js/" class="footer-link" target="_blank">
+//     <img class

@@ -1,0 +1,29 @@
+.body {
+    background-image: url(../assets/images/background.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    @include extra-small {
+        font-size: 14px;
+    }
+
+    .body-shadow {
+        background-color: $colorWhite;
+        opacity: 0.8;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+}
+
+.items {
+    padding: 1.25rem 0;
+        width: 100%;
+        height: 100%;
+        @include flex-row();
+        flex-wrap: wrap;
+}

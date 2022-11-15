@@ -1,0 +1,191 @@
+.note {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  opacity: 0.5;
+  z-index: -1;
+
+  // transform: rotate(60deg);
+  // animation: flying 60s;
+  animation-iteration-count: 10;
+  @include transition();
+}
+
+.note-blue {
+  top: 0%;
+  left: 10%;
+  animation: note-blue 30s alternate;
+  animation-iteration-count: 10;
+  filter: invert(47%) sepia(57%) saturate(1856%) hue-rotate(183deg)
+    brightness(97%) contrast(97%);
+}
+@keyframes note-blue {
+  0% {
+    left: 10%;
+    top: 0%;
+  }
+
+  100% {
+    left: 10%;
+    top: 100%;
+  }
+}
+
+.note-pink {
+  top: 0%;
+  left: 30%;
+  animation: note-pink 40s alternate;
+  animation-iteration-count: 10;
+  filter: invert(19%) sepia(60%) saturate(7054%) hue-rotate(331deg)
+    brightness(98%) contrast(87%);
+}
+
+@keyframes note-pink {
+  0% {
+    left: 30%;
+    top: 0%;
+  }
+  100% {
+    left: 30%;
+    top: 100%;
+  }
+}
+
+.note-yellow {
+  top: 0%;
+  left: 50%;
+  animation: note-yellow 30s alternate;
+  animation-iteration-count: 10;
+  filter: invert(79%) sepia(58%) saturate(2244%) hue-rotate(352deg)
+    brightness(102%) contrast(103%);
+}
+
+@keyframes note-yellow {
+  0% {
+    left: 50%;
+    top: 0%;
+  }
+  100% {
+    left: 50%;
+    top: 100%;
+  }
+}
+
+.note-green {
+  top: 0%;
+  left: 80%;
+  animation: note-green 40s alternate;
+  animation-iteration-count: 10;
+  filter: invert(68%) sepia(8%) saturate(3452%) hue-rotate(73deg)
+    brightness(87%) contrast(77%);
+}
+
+@keyframes note-green {
+  0% {
+    left: 70%;
+    top: 0%;
+  }
+  100% {
+    left: 70%;
+    top: 100%;
+  }
+}
+
+.note-violet {
+  top: 100%;
+  left: 20%;
+  animation: note-violet 50s alternate;
+  animation-iteration-count: 10;
+  filter: invert(19%) sepia(39%) saturate(6515%) hue-rotate(282deg)
+    brightness(92%) contrast(88%);
+}
+
+@keyframes note-violet {
+  0% {
+    left: 20%;
+    top: 100%;
+  }
+  100% {
+    left: 20%;
+    top: 0%;
+  }
+}
+
+.note-orange {
+  top: 100%;
+  left: 40%;
+  animation: note-orange 40s alternate;
+  animation-iteration-count: 10;
+  filter: invert(59%) sepia(65%) saturate(5977%) hue-rotate(346deg)
+    brightness(100%) contrast(101%);
+}
+
+@keyframes note-orange {
+  0% {
+    left: 40%;
+    top: 100%;
+  }
+  100% {
+    left: 40%;
+    top: 0%;
+  }
+}
+
+.note-red {
+  top: 100%;
+  left: 60%;
+  animation: note-red 30s alternate;
+  animation-iteration-count: 10;
+  filter: invert(36%) sepia(73%) saturate(3233%) hue-rotate(341deg)
+    brightness(98%) contrast(96%);
+}
+
+@keyframes note-red {
+  0% {
+    left: 60%;
+    top: 100%;
+  }
+  100% {
+    left: 60%;
+    top: 0%;
+  }
+}
+
+.note-grey {
+  top: 100%;
+  left: 80%;
+  animation: note-grey 30s alternate;
+  animation-iteration-count: 10;
+  filter: invert(71%) sepia(0%) saturate(0%) hue-rotate(253deg) brightness(90%)
+    contrast(87%);
+}
+
+@keyframes note-grey {
+  0% {
+    left: 80%;
+    top: 100%;
+  }
+  100% {
+    left: 80%;
+    top: 0%;
+  }
+}
+
+.note-lilac {
+    top: 0%;
+    left: 90%;
+    animation: note-lilac 50s alternate;
+    animation-iteration-count: 10;
+    filter: invert(23%) sepia(78%) saturate(2352%) hue-rotate(251deg) brightness(82%) contrast(87%);
+  }
+  
+  @keyframes note-lilac {
+    0% {
+      left: 90%;
+      top: 0%;
+    }
+    100% {
+      left: 90%;
+      top: 100%;
+    }
+  }

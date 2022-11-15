@@ -1,14 +1,20 @@
-@import  './pages/main-page';
+@import './abstracts/extends';
+@import './abstracts/mixins';
+@import './base/variables';
+@import './base/normalize';
+
+
+@import  './pages/first-page';
 @import  './pages/second-page';
 @import  './pages/third-page';
 
-@import './abstracts/extends';
-@import './abstracts/mixins';
-@import './base/normalize';
-@import './base/variables';
+
 
 @import './components/wrappers';
 @import './components/buttons';
+@import './components/containers';
+@import './components/notes';
+@import './components/links';
 
 
 @import './elements/header';

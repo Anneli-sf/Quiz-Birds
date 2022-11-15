@@ -15,7 +15,15 @@
 //---------------transition
 
 @mixin transition {
-    transition: all 0.3s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+@mixin transition-400 {
+  transition: 400ms ease all;
+}
+
+@mixin transition-800 {
+  transition: 800ms ease all;
 }
 
 

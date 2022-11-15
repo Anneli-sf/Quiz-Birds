@@ -1,0 +1,32 @@
+.nav-score {
+  color: $colorMainDark;
+//   display: none;
+  @include transition();
+  opacity: 0;
+  z-index: -10;
+  transform: translateX(-100%);
+  width: 0%;
+
+
+  &.visible {
+    opacity: 1;
+    z-index: 10;
+    display: flex;
+    transform: translateX(0%);
+    @include transition();
+    width: 100%;
+  }
+
+  .nav-input {
+    font-family: inherit;
+    font-size: inherit;
+    width: 2rem;
+    text-align: center;
+   
+  }
+
+  .nav-label {
+    color: $colorMainDark;
+  }
+}
+

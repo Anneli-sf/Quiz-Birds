@@ -6,29 +6,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gem Puzzle</title>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="icon" href="#" />
+    <link rel="icon" href="./assets/favicon.ico" />
   </head>
   <body class="body" id="body">
+    <div class="body-shadow"></div>
     <div class="wrapper">
+      <!--HEADER-->
       <header class="header">
         <div class="container">
-          <button class="button"><a href="./second-page.html">second-page</a></button>
-          <button class="button"><a href="./third-page.html">third-page</a></button>
+          <div class="header-items items">
+            <a href="#" class="header-item header-logo link">
+              <div class="logo">
+                <img
+                  class="logo-img"
+                  src="./assets/svg/logo.png"
+                  alt="logo-bird"
+                />
+              </div>
+            </a>
+            <nav class="header-item nav-items">
+              <!-- <form class="nav-item nav-form" action="./second-page.html"> -->
+                <button class="button header-btn" id="btn-play">Let's play</button>
+              <!-- </form> -->
+              <div class="nav-item nav-score">
+                <label class="nav-label" for="score">Score:</label>
+                <input class="nav-input" type="text" value="0" id="score" readonly/>
+              </div>
+              <!-- <form action="./third-page.html">
+                <button class="nav-item button header-btn btn-5">
+                  Results
+                </button>
+              </form> -->
+            </nav>
+          </div>
         </div>
       </header>
+      <!--/HEADER-->
       <main class="main">
         <div class="container main__container">
-          
-          <div class="small-bird"></div>
-          <img class="bird" src="./assets/images/bird.jpg" alt="bird">
+          <img class="note note-blue" src="./assets/svg/note.png" alt="note" />
+          <img class="note note-pink" src="./assets/svg/note.png" alt="note" />
+          <img
+            class="note note-yellow"
+            src="./assets/svg/note.png"
+            alt="note"
+          />
+          <img class="note note-green" src="./assets/svg/note.png" alt="note" />
+          <img
+            class="note note-violet"
+            src="./assets/svg/note.png"
+            alt="note"
+          />
+          <img
+            class="note note-orange"
+            src="./assets/svg/note.png"
+            alt="note"
+          />
+          <img class="note note-red" src="./assets/svg/note.png" alt="note" />
+          <img class="note note-grey" src="./assets/svg/note.png" alt="note" />
+          <img class="note note-lilac" src="./assets/svg/note.png" alt="note" />
+
+          <section class="main-section">
+            <h1 class="title main-title">Welcome to SongBird!</h1>
+            <p class="description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Obcaecati, quod harum at aliquid ipsum et explicabo inventore nam
+              sequi! Quaerat ratione eos saepe dolor voluptatem ea? Consequatur
+              tempore molestiae ratione.
+            </p>
+          </section>
         </div>
       </main>
+      <!--FOOTER-->
       <footer class="footer">
         <div class="container">
-          <button class="button"><a href="./second-page.html">second-page</a></button>
-          <button class="button"><a href="./third-page.html">third-page</a></button>
+          <div class="footer-items items">
+            <div class="footer-item">
+              <a
+                href="https://github.com/Anneli-sf"
+                class="footer-link link"
+                target="_blank"
+              >
+                <img
+                  class="footer-img"
+                  src="./assets/svg/github.png"
+                  alt="git-hub-logo"
+                />
+              </a>
+            </div>
+            <div class="footer-item">
+              <p class="year">&#169; 2022</p>
+            </div>
+            <div class="footer-item">
+              <a
+                href="https://rs.school/js/"
+                class="footer-link link"
+                target="_blank"
+              >
+                <img
+                  class="footer-img"
+                  src="./assets/svg/rs_school.svg"
+                  alt="rs-school-logo"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
+      <!--/FOOTER-->
     </div>
   </body>
 </html>

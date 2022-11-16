@@ -20,6 +20,7 @@
     z-index: 5;
 }
 
-.main__container {
+.main-container {
     @include flex-column($justify: space-around);
+    position: relative;
 }

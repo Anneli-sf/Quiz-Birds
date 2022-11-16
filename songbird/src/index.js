@@ -1,4 +1,3 @@
-import './scss/style.scss';
-import './js/main-page';
-
-
+import "./scss/style.scss";
+import "./js/main";
+import "./js/player";

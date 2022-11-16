@@ -11,6 +11,18 @@
   <body class="body" id="body">
     <div class="body-shadow"></div>
     <div class="wrapper">
+      <!--NOTES-->
+      <div class="notes">
+        <img class="note note-blue" src="./assets/svg/note.png" alt="note" />
+        <img class="note note-pink" src="./assets/svg/note.png" alt="note" />
+        <img class="note note-yellow" src="./assets/svg/note.png" alt="note" />
+        <img class="note note-green" src="./assets/svg/note.png" alt="note" />
+        <img class="note note-violet" src="./assets/svg/note.png" alt="note" />
+        <img class="note note-orange" src="./assets/svg/note.png" alt="note" />
+        <img class="note note-red" src="./assets/svg/note.png" alt="note" />
+        <img class="note note-grey" src="./assets/svg/note.png" alt="note" />
+        <img class="note note-lilac" src="./assets/svg/note.png" alt="note" />
+      </div>
       <!--HEADER-->
       <header class="header">
         <div class="container">
@@ -26,11 +38,19 @@
             </a>
             <nav class="header-item nav-items">
               <!-- <form class="nav-item nav-form" action="./second-page.html"> -->
-                <button class="button header-btn" id="btn-play">Let's play</button>
+              <button class="button header-btn" id="btn-play">
+                let's play
+              </button>
               <!-- </form> -->
               <div class="nav-item nav-score">
                 <label class="nav-label" for="score">Score:</label>
-                <input class="nav-input" type="text" value="0" id="score" readonly/>
+                <input
+                  class="nav-input"
+                  type="text"
+                  value="0"
+                  id="score"
+                  readonly
+                />
               </div>
               <!-- <form action="./third-page.html">
                 <button class="nav-item button header-btn btn-5">
@@ -41,31 +61,11 @@
           </div>
         </div>
       </header>
+
       <!--/HEADER-->
       <main class="main">
-        <div class="container main__container">
-          <img class="note note-blue" src="./assets/svg/note.png" alt="note" />
-          <img class="note note-pink" src="./assets/svg/note.png" alt="note" />
-          <img
-            class="note note-yellow"
-            src="./assets/svg/note.png"
-            alt="note"
-          />
-          <img class="note note-green" src="./assets/svg/note.png" alt="note" />
-          <img
-            class="note note-violet"
-            src="./assets/svg/note.png"
-            alt="note"
-          />
-          <img
-            class="note note-orange"
-            src="./assets/svg/note.png"
-            alt="note"
-          />
-          <img class="note note-red" src="./assets/svg/note.png" alt="note" />
-          <img class="note note-grey" src="./assets/svg/note.png" alt="note" />
-          <img class="note note-lilac" src="./assets/svg/note.png" alt="note" />
-
+        <div class="container main-container">
+          <!--FIRST PAGE-->
           <section class="main-section">
             <h1 class="title main-title">Welcome to SongBird!</h1>
             <p class="description">
@@ -74,6 +74,141 @@
               sequi! Quaerat ratione eos saepe dolor voluptatem ea? Consequatur
               tempore molestiae ratione.
             </p>
+          </section>
+
+          <!--SECOND PAGE-->
+          <section class="second-section">
+            <div class="levels nav-items">
+              <button class="button level-btn">warm-up</button>
+              <button class="button level-btn">passerines</button>
+              <button class="button level-btn">forest birds</button>
+              <button class="button level-btn">songbirds</button>
+              <button class="button level-btn">predator birds</button>
+              <button class="button level-btn">sea birds</button>
+            </div>
+            <!--QUESTION-->
+            <div class="question">
+              <div class="question-image">
+                <img
+                  class="question-picture"
+                  src="./assets/images/guess-bird.png"
+                  alt="any-bird"
+                />
+              </div>
+
+              <div class="question-task">
+                <p class="question-name">*****</p>
+                <div class="question-player">
+                  <div class="player-controls">
+                    <div class="player-button playbtn" data-video="false"></div>
+                    <div class="progress">
+                      <div class="progress-filled"></div>
+                    </div>
+                    <div class="volume-button volumebtn"></div>
+                    <input
+                      type="range"
+                      name="volume"
+                      class="volume-level"
+                      min="0"
+                      max="1"
+                      step="0.1"
+                      value="0.5"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--ANSWERS AND INFO-->
+            <div class="answer">
+              <!--NAMES-->
+              <div class="answer-names answer-items show-option">
+                <div class="show-inputs">
+                  <div>
+                    <input type="checkbox" id="time" name="time" checked />
+                    <label class="text-time" for="time">time</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="date" name="date" checked />
+                    <label class="text-date" for="date">date</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="greeting"
+                      name="greeting"
+                      checked
+                    />
+                    <label class="text-greeting" for="greeting">greeting</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="quote" name="quote" checked />
+                    <label class="text-quotes" for="quote">quote</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="weather"
+                      name="weather"
+                      checked
+                    />
+                    <label class="text-weather" for="weather">weather</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="audio" name="audio" checked />
+                    <label class="text-audioplayer" for="audio"
+                      >audioplayer</label
+                    >
+                  </div>
+                  <div>
+                    <input type="checkbox" id="todo" name="todo" checked />
+                    <label class="text-todo" for="todo">todo</label>
+                  </div>
+                </div>
+              </div>
+
+              <!--DESCRIPTION-->
+              <div class="answer-description answer-items">
+                <div class="answer-title">
+                  <div class="answer-image">
+                    <img
+                      class="answer-picture"
+                      src="./assets/images/bird.jpg"
+                      alt="bird-image"
+                    />
+                  </div>
+                  <div class="answer-info">
+                    <p class="name"></p>
+                    <p class="latin-name"></p>
+                    <div class="player-controls">
+                      <div class="player-button playbtn" data-video="false"></div>
+                      <div class="progress">
+                        <div class="progress-filled"></div>
+                      </div>
+                      <div class="volume-button volumebtn"></div>
+                      <input
+                        type="range"
+                        name="volume"
+                        class="volume-level"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value="0.5"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <p class="answer-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
+                  eos, magnam deserunt aperiam hic labore, deleniti et
+                  voluptatum nemo soluta alias quia aliquam dolorem sint quis
+                  excepturi delectus, nulla quidem.
+                </p>
+              </div>
+            </div>
+
+            <button class="button next-level header-btn">next level</button>
           </section>
         </div>
       </main>

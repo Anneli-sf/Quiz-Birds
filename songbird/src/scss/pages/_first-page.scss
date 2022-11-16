@@ -7,6 +7,7 @@
 
 
 .main-section {
+    position: absolute;
     @include flex-column();
     max-width: 70%;
     background-color: $colorMainDark;
@@ -15,6 +16,15 @@
     border: 1px solid transparent;
     border-radius: 5px;
     padding: 1.25rem;
+    opacity: 1;
+    @include hidden;
+
+    &.hidden {
+        opacity: 0;
+        z-index: -10;
+        @include transition();
+        // cursor: none;
+    }
 
     .main-title {
         text-align: center;

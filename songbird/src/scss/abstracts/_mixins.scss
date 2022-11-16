@@ -12,10 +12,17 @@
   align-items: $align;
 }
 
+@mixin darkStyle {
+  background-color: $colorMainLight;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 1px 0px rgb(255 255 255 / 50%),
+    7px 7px 9px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
+}
+
 //---------------transition
 
 @mixin transition {
-    transition: all 1s ease-in-out;
+    transition: all 1s ease;
 }
 
 @mixin transition-400 {
@@ -24,6 +31,19 @@
 
 @mixin transition-800 {
   transition: 800ms ease all;
+}
+
+//----------------visibility
+
+@mixin hidden {
+  opacity: 0;
+  z-index: -10;
+
+}
+
+@mixin visible {
+  opacity: 1;
+  z-index: 10;
 }
 
 

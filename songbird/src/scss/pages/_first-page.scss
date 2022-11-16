@@ -6,7 +6,8 @@
   }
 
 
-.main-section {
+.main-section,
+.section {
     position: absolute;
     @include flex-column();
     max-width: 70%;
@@ -19,12 +20,7 @@
     opacity: 1;
     // @include hidden;
 
-    &.hidden {
-        opacity: 0;
-        z-index: -10;
-        @include transition();
-        // cursor: none;
-    }
+    
 
     .main-title {
         text-align: center;
@@ -35,4 +31,11 @@
     .description {
         text-align: center;
     }
+}
+
+.main-section.hidden {
+    opacity: 0;
+    z-index: -10;
+    @include transition();
+    // cursor: none;
 }

@@ -1,0 +1,31 @@
+.third-section {
+    background-color: $colorMainLight;
+    color: $colorMainDark;
+    gap: 1rem;
+
+    @include hidden;
+  
+    &.visible {
+      @include visible;
+      @include transition();
+    }
+
+    .finish-score {
+        color: $colorMainDark;
+        //   display: none;
+        @include transition();
+      
+        .finish-input {
+          font-family: inherit;
+          font-size: 2rem;
+          width: 2rem;
+          text-align: center;
+          background-color: transparent;
+        }
+      
+        .finish-label {
+          color: $colorMainDark;
+          font-size: 1.5rem;
+        }
+      }
+}

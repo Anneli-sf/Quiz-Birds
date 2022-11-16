@@ -17,7 +17,7 @@
     border-radius: 5px;
     padding: 1.25rem;
     opacity: 1;
-    @include hidden;
+    // @include hidden;
 
     &.hidden {
         opacity: 0;

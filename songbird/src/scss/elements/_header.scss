@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  max-height: 7.5rem;
+  max-height: 80px;
   height: 100%;
   @include flex-row($justify: center);
 
@@ -10,34 +10,51 @@
     // height: 100%;
     // @include flex-row();
     .header-item {
-
-      
     }
 
     .header-logo {
-      
-        
+      border: 1px solid transparent;
+      border-radius: 5px;
 
-      .logo-img {
-        height: 100%;
-        max-height: 5rem;
-        width: auto;
-        border: 1px solid transparent;
-        border-radius: 5px;
-        // @include transition-400();
+      display: block;
+      max-width: 130px;
+      max-height: 60px;
+      height: 100%;
+      width: 100%;
 
-  //       &:hover {
-  //         box-shadow: inset 0px 1px 1px 0px rgb(255 255 255 / 50%),
-  //   7px 7px 9px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
-  // background: linear-gradient(0deg, $colorMainDark 0%, #1d2641 100%);
-  // @include transition-800();
-  //       }
-    
-        
-      }
+      background-image: url(../assets/svg/logo.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      // .logo {
+      //   max-width: 200px;
+      //   max-height: 100px;
+      //   height: 100%;
+      //   width: 100%;
+
+      //   background-image: url(../assets/svg/logo.png);
+      // background-position: center;
+      // background-repeat: no-repeat;
+      // background-size: contain;
+      // }
+
+      // .logo-img {
+      //   height: 100%;
+      //   max-height: 5rem;
+      //   width: auto;
+      //   border: 1px solid transparent;
+      //   border-radius: 5px;
+
+      //       &:hover {
+      //         box-shadow: inset 0px 1px 1px 0px rgb(255 255 255 / 50%),
+      //   7px 7px 9px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
+      // background: linear-gradient(0deg, $colorMainDark 0%, #1d2641 100%);
+      // @include transition-800();
+      //       }
+
+      // }
     }
-
-    
   }
 }
 

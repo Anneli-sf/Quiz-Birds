@@ -11,7 +11,7 @@ const GUESS_NAME = document.querySelector(".question-name");
 const NAMES_COLL = [...document.querySelectorAll(".answer-name")];
 const BIRD_INFO_SECTION = document.querySelector(".answer-description");
 const NAMES = document.querySelector(".show-inputs");
-const smallPlayer = document.querySelector(".small-player-controls")
+const smallPlayer = document.querySelector(".small-player-controls");
 
 const currBirdImage = document.querySelector(".answer-image");
 const currBirdName = document.querySelector(".name");
@@ -34,18 +34,41 @@ function startGame() {
   smallPlayer.classList.add("hidden");
 }
 
-function showChosenBird(e, currLevel) {
+function showChosenBird(e, currLevel, currBirdNumber) {
   let currVariant = e.target.closest("input");
   let currId;
   if (currVariant) {
     currId = e.target.id.slice(4);
-    // console.log(currVariant.checked);
+    console.log("curr chosen id", currId);
+    // console.log(currVariantName);
     showBirdInfo(currLevel, currId);
-    markCurrAnswer(currId, currLevel);
     if (currVariant.checked == false) {
       currVariant.checked = true;
     }
   }
+}
+
+//-------подсветка верного-неверного ответа
+function markCurrAnswer(e, currLevel, currBirdNumber) {
+    let currVariantName = e.target.closest("label");
+    let currId;
+    if (currVariantName) {
+      currId = e.target.id.slice(6);
+      console.log("curr name chosen id", currId);
+      // console.log(currVariantName);
+      if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
+        currVariantName.classList.add("true");
+        showGuessedBird(currBirdNumber, currLevel);
+      } else {
+        currVariantName.classList.add("false");
+      }
+    }
+}
+
+//----------------отобразить угаданную птицу
+function showGuessedBird(currBirdNumber, currLevel) {
+    GUESS_IMAGE.style.backgroundImage = `url("${birdsDataEn[currLevel][currBirdNumber].image}")`;
+    GUESS_NAME.innerHTML = birdsDataEn[currLevel][currBirdNumber].name;
 }
 
 function showBirdInfo(currLevel, currId) {
@@ -59,12 +82,6 @@ function showBirdInfo(currLevel, currId) {
   currBirdSpecies.innerHTML = `${birdsDataEn[currLevel][currId - 1].species}`;
   currBirdInfo.innerHTML = `${birdsDataEn[currLevel][currId - 1].description}`;
 }
-
-// function markCurrAnswer(currId, currLevel, currBird) {
-// if (currId == birdsDataEn[currLevel][currBird].id) {
-//     console.log("true")
-// } else console.log("false")
-// }
 
 export {
   SCORE_INPUT,
@@ -81,4 +98,5 @@ export {
   smallPlayer,
   startGame,
   showChosenBird,
+  markCurrAnswer
 };

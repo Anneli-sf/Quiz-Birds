@@ -6,7 +6,8 @@ import {
   ALL_LEVELS,
   GUESS_IMAGE,
   NAMES,
-  showChosenBird
+  showChosenBird,
+  markCurrAnswer
 } from "./second-page";
 import {
   switchToSecondPage,
@@ -19,20 +20,20 @@ import { birdsDataEn } from "./dataBirds";
 import { AUDIO } from "./player";
 
 let currLevel = 0;
-let currBird = 0;
+let currBirdNumber = 0;
 
 BTN_PLAY.addEventListener("click", () => {
   switchToSecondPage();
-  currBird = getRandomValue(0, 5);
-  AUDIO.src = birdsDataEn[currLevel][currBird].audio;
-  console.log(birdsDataEn[currLevel][currBird].id);
+  currBirdNumber = getRandomValue(0, 5);
+  AUDIO.src = birdsDataEn[currLevel][currBirdNumber].audio;
+  console.log("bird Id",birdsDataEn[currLevel][currBirdNumber].id);
+  console.log("bird name",birdsDataEn[currLevel][currBirdNumber].name);
 });
 
 BTN_NEXT.addEventListener("click", switchToThirdPage);
 BTN_PLAY_AGAIN.addEventListener("click", switchToStartPage);
 
 NAMES.addEventListener("click", (e) => {
-  showChosenBird(e, currLevel);
-
-//   if (e.target.closest("input").checked == true) console.log("input")
+  showChosenBird(e, currLevel, currBirdNumber);
+  markCurrAnswer(e, currLevel, currBirdNumber)
 });

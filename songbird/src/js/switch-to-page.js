@@ -1,6 +1,8 @@
 import { BTN_PLAY, FIRST_PAGE } from "./first-page";
-import { SCORE_INPUT, SECOND_PAGE } from "./second-page";
+import { SCORE_INPUT, SECOND_PAGE, BTNS_LEVEL_collection, startGame } from "./second-page";
 import { THIRD_PAGE } from "./third-page";
+import {getRandomValue} from "./helpers";
+
 
 function switchToSecondPage() {
   BTN_PLAY.classList.add("hidden");
@@ -8,6 +10,9 @@ function switchToSecondPage() {
 
   SCORE_INPUT.classList.add("visible");
   SECOND_PAGE.classList.add("visible");
+
+  startGame();
+  
 }
 
 function switchToThirdPage() {

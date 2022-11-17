@@ -37,7 +37,7 @@
   max-width: 1200px;
   font-size: 0.8em;
 
-//   background-color: aqua;
+  //   background-color: aqua;
   @include hidden;
   // cursor: none;
   color: $colorMainDark;
@@ -47,15 +47,12 @@
     @include visible;
     @include transition();
   }
-
-  
 }
 
 .question {
-
   @include flex-row();
   width: 100%;
-  max-height: 25%;
+  max-height: 30%;
   gap: 1rem 1rem;
 
   .question-image {
@@ -67,16 +64,17 @@
     width: 30%;
     height: 100%;
 
-    background-image: url(../assets/images/guess-bird.png);
+    // background-image: url(../assets/images/guess-bird.png);
+    // background-image: url("https://live.staticflickr.com//65535//49298804222_474cfe8682.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
 
     .question-picture {
-        // max-width: 25rem;
-        // max-height: 25rem;
-        width: 100%;
-        height: 100%;
+      // max-width: 25rem;
+      // max-height: 25rem;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -103,7 +101,6 @@
 }
 
 .answer {
- 
   @include flex-row();
   width: 100%;
   max-height: 50%;
@@ -124,12 +121,14 @@
     max-width: 300px;
     width: 30%;
   }
-  
 
   .answer-names {
   }
 
   .answer-description {
+    width: 100%;
+    text-align: center;
+    
     .answer-title {
       @include flex-row();
       width: 100%;
@@ -142,12 +141,12 @@
         border-radius: 5px;
 
         width: 30%;
-    height: 100%;
+        height: 100%;
 
-    background-image: url(../assets/images/guess-bird.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+        background-image: url(../assets/images/guess-bird.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
 
         .answer-picture {
           width: 100%;
@@ -161,17 +160,17 @@
         @include flex-column($align: flex-start);
 
         .name {
-            margin-bottom: 5px;
-            font-weight: 700;
-            font-size: 1.5em;
-            width: 30%;
-            border-bottom: 1px solid $colorMainDark;
+          margin-bottom: 5px;
+          font-weight: 700;
+          font-size: 1.5em;
+          width: 30%;
+          border-bottom: 1px solid $colorMainDark;
         }
 
         .latin-name {
-            margin-bottom: 15px;
-            border-bottom: 1px solid $colorMainDark;
-            width: 100%;
+          margin-bottom: 15px;
+          border-bottom: 1px solid $colorMainDark;
+          width: 100%;
         }
       }
     }

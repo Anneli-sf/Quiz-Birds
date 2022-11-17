@@ -39,13 +39,14 @@
 
   //   background-color: aqua;
   @include hidden;
-  // cursor: none;
+  pointer-events: none;
   color: $colorMainDark;
   gap: 0.8rem;
 
   &.visible {
     @include visible;
     @include transition();
+    pointer-events: auto;
   }
 }
 
@@ -128,7 +129,7 @@
   .answer-description {
     width: 100%;
     text-align: center;
-    
+
     .answer-title {
       @include flex-row();
       width: 100%;
@@ -143,7 +144,7 @@
         width: 30%;
         height: 100%;
 
-        background-image: url(../assets/images/guess-bird.png);
+        background-image: url(../assets/svg/currBirdBkgr.png);
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -165,12 +166,24 @@
           font-size: 1.5em;
           width: 30%;
           border-bottom: 1px solid $colorMainDark;
+          text-align: left;
+          @include visible();
+
+          &.hidden {
+            @include hidden();
+          }
         }
 
         .latin-name {
           margin-bottom: 15px;
           border-bottom: 1px solid $colorMainDark;
           width: 100%;
+          text-align: left;
+          @include visible();
+
+          &.hidden {
+            @include hidden();
+          }
         }
       }
     }

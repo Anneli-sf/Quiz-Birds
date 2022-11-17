@@ -1,10 +1,7 @@
 import { birdsDataEn } from "./dataBirds";
-
-// const poster = document.querySelector('.poster');
-// const videoBtn = document.querySelector('.play-hover');
+import { getRandomValue } from "./helpers";
 
 const player = document.querySelector(".player-controls");
-// const video = player.querySelector('.mainvideo');
 const progress = player.querySelector(".progress");
 const progressOfAudio = player.querySelector(".progress-filled");
 
@@ -13,78 +10,28 @@ const buttonVolume = player.querySelector(".volumebtn");
 const volumeLevel = player.querySelector(".volume-level");
 
 const AUDIO = new Audio();
-let isPlay = false;
-let trackNum = 0;
+// let currLevel = 0;
+// let currBirdAudio = getRandomValue(0, 5);
 
-AUDIO.src = birdsDataEn[0][trackNum].audio;
+// AUDIO.src = birdsDataEn[currLevel][currBirdAudio].audio;
 
-console.log(AUDIO.src);
-// AUDIO.play();
-
-// function startAudio() {
-//   AUDIO.currentTime = 0;
-//   AUDIO.play();
-//   isPlay = true;
-// }
-
-// function playAudio() {
-//   AUDIO.src = playList[trackNum].src;
-//   const trackName = document.querySelectorAll(".play-item");
-
-//   if (!isPlay) {
-//     startAudio();
-//     BTN_PLAY.classList.toggle("pause");
-//     trackName[trackNum].classList.add("active");
-//   } else {
-//     AUDIO.pause();
-//     isPlay = false;
-//     BTN_PLAY.classList.toggle("pause");
-//     trackName[trackNum].classList.remove("active");
-//   }
-// }
+// console.log(AUDIO.src);
 
 //воспроизведение видео
 function playAudio() {
   if (AUDIO.paused) {
     AUDIO.play();
-
-    changeBtn();
+    buttonPlay.classList.add("pausebtn");
   } else {
     AUDIO.pause();
-
-    changeBtn();
+    buttonPlay.classList.remove("pausebtn");
   }
 }
 
-// video.addEventListener('click', playVideo);
 buttonPlay.addEventListener("click", playAudio);
-// videoBtn.addEventListener('click', playVideo);
-
-//кнопка play/pause
-function changeBtn() {
-//   if (e.target.classList.contains("playbtn")) {
-//     buttonPlay.classList.toggle("pausebtn");
-//   }
-
-if (buttonPlay.closest(".pausebtn"))
-    buttonPlay.classList.remove("pausebtn");
-    else buttonPlay.classList.add("pausebtn");
-  
-}
-
-// video.addEventListener('click', changeBtn);
-
-// videoBtn.addEventListener('click', changeBtn);
-// videoBtn.addEventListener('play', changeBtn);
-// videoBtn.addEventListener('pause', changeBtn);
-
-buttonPlay.addEventListener("click", changeBtn);
-buttonPlay.addEventListener("play", changeBtn);
-buttonPlay.addEventListener("pause", changeBtn);
 
 //звук видео
 function changeVolume() {
-  // video.volume = e.target.value;
   AUDIO.volume = this.value; //регулирование громкости
 
   if (this.value === this.min) {
@@ -93,15 +40,10 @@ function changeVolume() {
   } else buttonVolume.classList.remove("mute");
 }
 
-function nullVolume() {
-  AUDIO.value = 0;
-}
-
 volumeLevel.addEventListener("change", changeVolume);
 volumeLevel.addEventListener("mousemove", changeVolume);
 
 //цвет ползунка
-
 volumeLevel.addEventListener("input", function () {
   const value = this.value;
   console.log(value);
@@ -164,3 +106,5 @@ progress.addEventListener("mousemove", (e) => {
 });
 progress.addEventListener("mousedown", () => (mousedown = true));
 progress.addEventListener("mouseup", () => (mousedown = false));
+
+export { AUDIO };

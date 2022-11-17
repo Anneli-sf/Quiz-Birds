@@ -69,22 +69,24 @@
           <section class="main-section section" id="first-section">
             <h1 class="title main-title">Welcome to SongBird!</h1>
             <p class="description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Obcaecati, quod harum at aliquid ipsum et explicabo inventore nam
-              sequi! Quaerat ratione eos saepe dolor voluptatem ea? Consequatur
-              tempore molestiae ratione.
-            </p>
+              how to play:</p>
+              <ul>
+              <li class="main-list">listen to audio</li>
+              <li class="main-list">guess which bird sounds in the audio</li>
+              <li class="main-list">go to the next level and keep guessing</li>
+            </ul>
+            <p class="description">good luck!</p>
           </section>
 
           <!--SECOND PAGE-->
           <section class="second-section" id="second-section">
             <div class="levels nav-items">
-              <button class="button level-btn">warm-up</button>
-              <button class="button level-btn">passerines</button>
-              <button class="button level-btn">forest birds</button>
-              <button class="button level-btn">songbirds</button>
-              <button class="button level-btn">predator birds</button>
-              <button class="button level-btn">sea birds</button>
+              <button class="button level-btn" id="level-0">warm-up</button>
+              <button class="button level-btn" id="level-1">passerines</button>
+              <button class="button level-btn" id="level-2">forest birds</button>
+              <button class="button level-btn" id="level-3">songbirds</button>
+              <button class="button level-btn" id="level-4">predator birds</button>
+              <button class="button level-btn" id="level-5">sea birds</button>
             </div>
             <!--QUESTION-->
             <div class="question">
@@ -126,11 +128,11 @@
                 <div class="show-inputs">
                   <div>
                     <input type="checkbox" id="name1" name="name1" />
-                    <label class="answer-name" for="name1">time</label>
+                    <label class="answer-name" for="name1" id="label-1">time</label>
                   </div>
                   <div>
                     <input type="checkbox" id="name2" name="name2" />
-                    <label class="answer-name" for="name2">date</label>
+                    <label class="answer-name" for="name2" id="label-2">date</label>
                   </div>
                   <div>
                     <input
@@ -138,11 +140,11 @@
                       id="name3"
                       name="name3"
                     />
-                    <label class="answer-name" for="name3">greeting</label>
+                    <label class="answer-name" for="name3" id="label-3">greeting</label>
                   </div>
                   <div>
                     <input type="checkbox" id="name4" name="name4" />
-                    <label class="answer-name" for="name4">quote</label>
+                    <label class="answer-name" for="name4" id="label-4">quote</label>
                   </div>
                   <div>
                     <input
@@ -151,11 +153,11 @@
                       name="name5"
                     
                     />
-                    <label class="answer-name" for="name5">weather</label>
+                    <label class="answer-name" for="name5" id="label-5">weather</label>
                   </div>
                   <div>
                     <input type="checkbox" id="name6" name="name6"/>
-                    <label class="answer-name" for="name6"
+                    <label class="answer-name" for="name6" id="label-6"
                       >audioplayer</label
                     >
                   </div>
@@ -177,8 +179,8 @@
                     /> -->
                   </div>
                   <div class="answer-info">
-                    <p class="name">bird</p>
-                    <p class="latin-name">latin bird</p>
+                    <p class="name"></p>
+                    <p class="latin-name"></p>
                     <div class="player-controls small-player-controls">
                       <div class="player-button playbtn small-player-button" data-video="false"></div>
                       <div class="progress small-progress">
@@ -199,10 +201,7 @@
                 </div>
 
                 <p class="answer-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
-                  eos, magnam deserunt aperiam hic labore, deleniti et
-                  voluptatum nemo soluta alias quia aliquam dolorem sint quis
-                  excepturi delectus, nulla quidem.
+                  
                 </p>
               </div>
             </div>

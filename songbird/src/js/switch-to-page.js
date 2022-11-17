@@ -11,7 +11,7 @@ function switchToSecondPage() {
   SCORE_INPUT.classList.add("visible");
   SECOND_PAGE.classList.add("visible");
 
-  startGame();
+  startGame(); // загрузка начального вида
   
 }
 

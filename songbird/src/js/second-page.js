@@ -1,6 +1,7 @@
 import { birdsDataEn } from "./dataBirds";
 
 const SCORE_INPUT = document.querySelector(".nav-score");
+const SCORE_VALUE = document.querySelector(".nav-input");
 const SECOND_PAGE = document.querySelector("#second-section");
 const BTN_NEXT = document.querySelector("#btn-next");
 const BTNS_LEVEL = document.querySelectorAll(".level-btn");
@@ -34,12 +35,13 @@ function startGame() {
   smallPlayer.classList.add("hidden");
 }
 
-function showChosenBird(e, currLevel, currBirdNumber) {
+//---------отобразить текущую выбранную птицу
+function showChosenBird(e, currLevel) {
   let currVariant = e.target.closest("input");
   let currId;
   if (currVariant) {
     currId = e.target.id.slice(4);
-    console.log("curr chosen id", currId);
+    // console.log("curr chosen id", currId);
     // console.log(currVariantName);
     showBirdInfo(currLevel, currId);
     if (currVariant.checked == false) {
@@ -48,29 +50,62 @@ function showChosenBird(e, currLevel, currBirdNumber) {
   }
 }
 
+let counter = 0;
+let score = 0;
+
 //-------подсветка верного-неверного ответа
 function markCurrAnswer(e, currLevel, currBirdNumber) {
-    let currVariantName = e.target.closest("label");
-    let currId;
-    if (currVariantName) {
-      currId = e.target.id.slice(6);
-      console.log("curr name chosen id", currId);
-      // console.log(currVariantName);
-      if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
-        currVariantName.classList.add("true");
-        showGuessedBird(currBirdNumber, currLevel);
-      } else {
-        currVariantName.classList.add("false");
-      }
+  let currVariantName = e.target.closest("label");
+  let currId;
+  
+  if (currVariantName) {
+    currId = e.target.id.slice(6);
+    counter++;
+  console.log(counter);
+    //   console.log("curr name chosen id", currId);
+    // console.log(currVariantName);
+    if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
+      currVariantName.classList.add("true");
+      showGuessedBird(currBirdNumber, currLevel);
+      showCurrScore(counter);
+      counter = 0;
+    } else {
+      currVariantName.classList.add("false");
     }
+  }
+}
+
+function showCurrScore(counter) {
+  switch (counter) {
+    case 1:
+      score = score + 5;
+      break;
+    case 2:
+      score = score + 4;
+      break;
+    case 3:
+      score = score + 3;
+      break;
+    case 4:
+      score = score + 2;
+      break;
+      case 5:
+      score = score + 1;
+      break;
+    default:
+      score = score + 0;
+  }
+//   console.log(score);
+  SCORE_VALUE.value = score;
 }
 
 //----------------отобразить угаданную птицу
 function showGuessedBird(currBirdNumber, currLevel) {
-    GUESS_IMAGE.style.backgroundImage = `url("${birdsDataEn[currLevel][currBirdNumber].image}")`;
-    GUESS_NAME.innerHTML = birdsDataEn[currLevel][currBirdNumber].name;
+  GUESS_IMAGE.style.backgroundImage = `url("${birdsDataEn[currLevel][currBirdNumber].image}")`;
+  GUESS_NAME.innerHTML = birdsDataEn[currLevel][currBirdNumber].name;
 }
 
+//----------------отобразить инфо о птице
 function showBirdInfo(currLevel, currId) {
   currBirdName.classList.remove("hidden");
   currBirdSpecies.classList.remove("hidden");
@@ -91,6 +126,7 @@ export {
   BTNS_LEVEL,
   ALL_LEVELS,
   NAMES,
+  SCORE_VALUE,
   currBirdImage,
   currBirdName,
   currBirdSpecies,
@@ -98,5 +134,5 @@ export {
   smallPlayer,
   startGame,
   showChosenBird,
-  markCurrAnswer
+  markCurrAnswer,
 };

@@ -22,13 +22,15 @@ const currBirdInfo = document.querySelector(".answer-text");
 //-----написание адреса картинки  GUESS_IMAGE.style.backgroundImage = `url("${birdsDataEn[0][0].image}")`;
 
 function startGame() {
-  BTNS_LEVEL.forEach((el) => el.classList.remove("active"));
+    BTNS_LEVEL.forEach((el) => el.classList.remove("active"));
   BTN_LEVEL_0.classList.add("active");
+  //   BTN_NEXT.disabled = true;
   GUESS_IMAGE.style.backgroundImage = "url(../assets/images/guess-bird.png)";
   GUESS_NAME.innerHTML = `*******`;
   NAMES_COLL.forEach((item, index) => {
     item.innerHTML = `${birdsDataEn[0][index].name}`;
   });
+  currBirdImage.style.backgroundImage = "url(../assets/svg/currBirdBkgr.png)";
   currBirdInfo.innerHTML = `listen to the sound and choose bird's name`;
   currBirdName.classList.add("hidden");
   currBirdSpecies.classList.add("hidden");
@@ -57,11 +59,11 @@ let score = 0;
 function markCurrAnswer(e, currLevel, currBirdNumber) {
   let currVariantName = e.target.closest("label");
   let currId;
-  
+
   if (currVariantName) {
     currId = e.target.id.slice(6);
     counter++;
-  console.log(counter);
+    console.log(counter);
     //   console.log("curr name chosen id", currId);
     // console.log(currVariantName);
     if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
@@ -69,6 +71,7 @@ function markCurrAnswer(e, currLevel, currBirdNumber) {
       showGuessedBird(currBirdNumber, currLevel);
       showCurrScore(counter);
       counter = 0;
+      BTN_NEXT.disabled = false;
     } else {
       currVariantName.classList.add("false");
     }
@@ -89,13 +92,13 @@ function showCurrScore(counter) {
     case 4:
       score = score + 2;
       break;
-      case 5:
+    case 5:
       score = score + 1;
       break;
     default:
       score = score + 0;
   }
-//   console.log(score);
+  //   console.log(score);
   SCORE_VALUE.value = score;
 }
 

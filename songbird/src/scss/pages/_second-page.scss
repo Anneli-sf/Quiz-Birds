@@ -144,10 +144,10 @@
         width: 30%;
         height: 100%;
 
-        background-image: url(../assets/svg/currBirdBkgr.png);
+        // background-image: url(../assets/svg/currBirdBkgr.png);
         background-repeat: no-repeat;
         background-position: center;
-        background-size: contain;
+        background-size: cover;
 
         .answer-picture {
           width: 100%;

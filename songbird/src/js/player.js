@@ -16,6 +16,15 @@ const AUDIO = new Audio();
 // AUDIO.src = birdsDataEn[currLevel][currBirdAudio].audio;
 
 // console.log(AUDIO.src);
+buttonPlay.addEventListener("click", playAudio);
+volumeLevel.addEventListener("change", changeVolume);
+volumeLevel.addEventListener("mousemove", changeVolume);
+buttonVolume.addEventListener("click", muteVolume);
+AUDIO.addEventListener("timeupdate", audioProgress);
+
+let currentVolume;
+let currentValue;
+let mousedown = false;
 
 //воспроизведение видео
 function playAudio() {
@@ -28,7 +37,7 @@ function playAudio() {
   }
 }
 
-buttonPlay.addEventListener("click", playAudio);
+
 
 //звук видео
 function changeVolume() {
@@ -40,22 +49,18 @@ function changeVolume() {
   } else buttonVolume.classList.remove("mute");
 }
 
-volumeLevel.addEventListener("change", changeVolume);
-volumeLevel.addEventListener("mousemove", changeVolume);
+
 
 //цвет ползунка
 volumeLevel.addEventListener("input", function () {
   const value = this.value;
-  console.log(value);
+//   console.log(value);
   this.style.background = `linear-gradient( to right, #212a43 0%, #212a43 ${
     value * 100
   }%, #fff ${value * 100}%, #fff 100% )`;
 });
 
 //кнопка звука
-
-let currentVolume;
-let currentValue;
 
 function muteVolume() {
   if (AUDIO.volume !== 0) {
@@ -75,7 +80,7 @@ function muteVolume() {
   }
 }
 
-buttonVolume.addEventListener("click", muteVolume);
+
 
 //прогресс-бар
 
@@ -87,17 +92,17 @@ function audioProgress() {
   if (currProgress == 100) buttonPlay.classList.remove("pausebtn");
 }
 
-AUDIO.addEventListener("timeupdate", audioProgress);
+
 
 //перемотка видео
 
 function rewindAudio(e) {
-  console.log(e);
+//   console.log(e);
   const rewindTime = (e.offsetX / progress.offsetWidth) * AUDIO.duration;
   AUDIO.currentTime = rewindTime;
 }
 
-let mousedown = false;
+
 progress.addEventListener("click", rewindAudio);
 progress.addEventListener("mousemove", (e) => {
   if (mousedown) {

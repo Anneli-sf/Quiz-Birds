@@ -29,7 +29,7 @@
     // @include transition-800();
   }
 
-  &:hover,
+  &:hover:enabled,
   &.active {
     color: $colorMainDark;
     background: transparent;
@@ -62,10 +62,10 @@
     bottom: 0;
   }
 
-   &.active:before,
+  &.active:before,
   &.active:after,
-  &:hover:before,
-  &:hover:after {
+  &:hover:enabled:before,
+  &:hover:enabled:after {
     width: 100%;
     @include transition-800();
   }

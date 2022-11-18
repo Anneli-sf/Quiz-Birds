@@ -8,7 +8,8 @@ import {
   NAMES,
   SCORE_VALUE,
   showChosenBird,
-  markCurrAnswer
+  markCurrAnswer,
+  startGame
 } from "./second-page";
 import {
   switchToSecondPage,
@@ -33,7 +34,7 @@ BTN_PLAY.addEventListener("click", () => {
 //   console.log("bird name",birdsDataEn[currLevel][currBirdNumber].name);
 });
 
-BTN_NEXT.addEventListener("click", switchToThirdPage);
+BTN_NEXT.addEventListener("click", startGame);
 BTN_PLAY_AGAIN.addEventListener("click", switchToStartPage);
 
 

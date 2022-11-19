@@ -42,7 +42,7 @@ BTN_PLAY_AGAIN.addEventListener("click", switchToStartPage);
 NAMES.addEventListener("click", (e) => {
     
   showChosenBird(e, currLevel, currBirdNumber);
-  markCurrAnswer(e, currLevel, currBirdNumber);
+//   markCurrAnswer(e, currLevel, currBirdNumber);
  
 });
 

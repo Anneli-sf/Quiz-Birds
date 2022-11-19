@@ -68,9 +68,8 @@
           <!--FIRST PAGE-->
           <section class="main-section section" id="first-section">
             <h1 class="title main-title">Welcome to SongBird!</h1>
-            <p class="description">
-              how to play:</p>
-              <ul>
+            <p class="description">how to play:</p>
+            <ul>
               <li class="main-list">listen to audio</li>
               <li class="main-list">guess which bird sounds in the audio</li>
               <li class="main-list">go to the next level and keep guessing</li>
@@ -83,9 +82,13 @@
             <div class="levels nav-items">
               <button class="button level-btn" id="level-0">warm-up</button>
               <button class="button level-btn" id="level-1">passerines</button>
-              <button class="button level-btn" id="level-2">forest birds</button>
+              <button class="button level-btn" id="level-2">
+                forest birds
+              </button>
               <button class="button level-btn" id="level-3">songbirds</button>
-              <button class="button level-btn" id="level-4">predator birds</button>
+              <button class="button level-btn" id="level-4">
+                predator birds
+              </button>
               <button class="button level-btn" id="level-5">sea birds</button>
             </div>
             <!--QUESTION-->
@@ -126,37 +129,38 @@
               <!--NAMES-->
               <div class="answer-names answer-items show-option">
                 <div class="show-inputs">
-                  <div>
+                  <div class="answer-variant">
                     <input type="checkbox" id="name1" name="name1" />
-                    <label class="answer-name" for="name1" id="label-1">time</label>
+                    <label class="answer-name" for="name1" id="label-1"
+                      >time</label
+                    >
                   </div>
-                  <div>
+                  <div class="answer-variant">
                     <input type="checkbox" id="name2" name="name2" />
-                    <label class="answer-name" for="name2" id="label-2">date</label>
+                    <label class="answer-name" for="name2" id="label-2"
+                      >date</label
+                    >
                   </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="name3"
-                      name="name3"
-                    />
-                    <label class="answer-name" for="name3" id="label-3">greeting</label>
+                  <div class="answer-variant">
+                    <input type="checkbox" id="name3" name="name3" />
+                    <label class="answer-name" for="name3" id="label-3"
+                      >greeting</label
+                    >
                   </div>
-                  <div>
+                  <div class="answer-variant">
                     <input type="checkbox" id="name4" name="name4" />
-                    <label class="answer-name" for="name4" id="label-4">quote</label>
+                    <label class="answer-name" for="name4" id="label-4"
+                      >quote</label
+                    >
                   </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="name5"
-                      name="name5"
-                    
-                    />
-                    <label class="answer-name" for="name5" id="label-5">weather</label>
+                  <div class="answer-variant">
+                    <input type="checkbox" id="name5" name="name5" />
+                    <label class="answer-name" for="name5" id="label-5"
+                      >weather</label
+                    >
                   </div>
-                  <div>
-                    <input type="checkbox" id="name6" name="name6"/>
+                  <div class="answer-variant">
+                    <input type="checkbox" id="name6" name="name6" />
                     <label class="answer-name" for="name6" id="label-6"
                       >audioplayer</label
                     >
@@ -182,11 +186,18 @@
                     <p class="name"></p>
                     <p class="latin-name"></p>
                     <div class="player-controls small-player-controls">
-                      <div class="player-button playbtn small-player-button" data-video="false"></div>
+                      <div
+                        class="player-button playbtn small-player-button"
+                        data-video="false"
+                      ></div>
                       <div class="progress small-progress">
-                        <div class="progress-filled small-progress-filled"></div>
+                        <div
+                          class="progress-filled small-progress-filled"
+                        ></div>
                       </div>
-                      <div class="volume-button volumebtn small-volume-button"></div>
+                      <div
+                        class="volume-button volumebtn small-volume-button"
+                      ></div>
                       <input
                         type="range"
                         name="volume"
@@ -200,13 +211,13 @@
                   </div>
                 </div>
 
-                <p class="answer-text">
-                  
-                </p>
+                <p class="answer-text"></p>
               </div>
             </div>
 
-            <button class="button next-level header-btn" id="btn-next" disabled>next level</button>
+            <button class="button next-level header-btn" id="btn-next" disabled>
+              next level
+            </button>
           </section>
 
           <!--THIRD PAGE-->
@@ -223,7 +234,9 @@
               />
             </div>
             <p class="count"></p>
-            <button class="button  new-level" id="btn-play-gain">play again</button>
+            <button class="button new-level" id="btn-play-gain">
+              play again
+            </button>
           </section>
         </div>
       </main>

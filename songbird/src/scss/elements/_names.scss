@@ -83,6 +83,16 @@ input[type="checkbox"]:not(:checked) + label:after {
   transform: rotate(-45deg);
 }
 
+input[type="checkbox"]:checked + label.true:after {
+  border-left: 4px solid  green;
+  border-bottom: 4px solid  green;
+}
+
+input[type="checkbox"]:checked + label.false:after {
+  border-left: 4px solid  #a00d3f;
+  border-bottom: 4px solid  #a00d3f;
+}
+
 input[type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
 }
@@ -100,11 +110,11 @@ input[type="checkbox"]:checked + label:after {
 
 .answer-name {
   &.false {
-    color: #a00d3f;
+    opacity: 0.5;
   }
 
   &.true {
-    color: #ffeb3b;
+    font-weight: 700;
   }
 }
 

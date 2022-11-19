@@ -9,7 +9,7 @@ import {
   SCORE_VALUE,
   showChosenBird,
   markCurrAnswer,
-  startGame
+  startGame,
 } from "./second-page";
 import {
   switchToSecondPage,
@@ -26,23 +26,30 @@ let currBirdNumber = 0;
 // let counter = 0;
 // let score = 0;
 
-BTN_PLAY.addEventListener("click", () => {
-  switchToSecondPage();
-  currBirdNumber = getRandomValue(0, 5);
-  AUDIO.src = birdsDataEn[currLevel][currBirdNumber].audio;
-//   console.log("bird Id",birdsDataEn[currLevel][currBirdNumber].id);
-//   console.log("bird name",birdsDataEn[currLevel][currBirdNumber].name);
+BTN_NEXT.addEventListener("click", () => {
+  startGame();
+  currLevel++;
+  setBirdAndLevel();
 });
 
-BTN_NEXT.addEventListener("click", startGame);
-BTN_PLAY_AGAIN.addEventListener("click", switchToStartPage);
+BTN_PLAY.addEventListener("click", () => {
+  switchToSecondPage();
+  setBirdAndLevel();
+  
+  //   console.log("bird Id",birdsDataEn[currLevel][currBirdNumber].id);
+  //   console.log("bird name",birdsDataEn[currLevel][currBirdNumber].name);
+});
 
+BTN_PLAY_AGAIN.addEventListener("click", switchToStartPage);
 
 //-----------клик по вариантам названий птиц
 NAMES.addEventListener("click", (e) => {
-    
   showChosenBird(e, currLevel, currBirdNumber);
-//   markCurrAnswer(e, currLevel, currBirdNumber);
- 
+  //   markCurrAnswer(e, currLevel, currBirdNumber);
 });
 
+function setBirdAndLevel() {
+    BTNS_LEVEL[currLevel].classList.add("active");
+    currBirdNumber = getRandomValue(0, 5);
+    AUDIO.src = birdsDataEn[currLevel][currBirdNumber].audio;
+}

@@ -1,5 +1,6 @@
 import { birdsDataEn } from "./dataBirds";
 import { getRandomValue } from "./helpers";
+import { BTN_NEXT } from "./second-page";
 
 const player = document.querySelector(".player-controls");
 const progress = player.querySelector(".progress");
@@ -37,8 +38,6 @@ function playAudio() {
   }
 }
 
-
-
 //звук видео
 function changeVolume() {
   AUDIO.volume = this.value; //регулирование громкости
@@ -49,9 +48,7 @@ function changeVolume() {
   } else buttonVolume.classList.remove("mute");
 }
 
-
-
-//цвет ползунка
+//цвет ползунка звука
 volumeLevel.addEventListener("input", function () {
   const value = this.value;
 //   console.log(value);
@@ -80,28 +77,29 @@ function muteVolume() {
   }
 }
 
-
-
 //прогресс-бар
 
 function audioProgress() {
-  const currProgress = (AUDIO.currentTime / AUDIO.duration) * 100;
+  let currProgress = (AUDIO.currentTime / AUDIO.duration) * 100;
+
+  
+  console.log(currProgress);
   progressOfAudio.style.flexBasis = `${currProgress}%`;
-  // console.log(currProgress);
+  BTN_NEXT.addEventListener("click", () => {
+    progressOfAudio.style.flexBasis = `0%`;
+  });
+  
 
   if (currProgress == 100) buttonPlay.classList.remove("pausebtn");
 }
 
-
-
 //перемотка видео
 
 function rewindAudio(e) {
-//   console.log(e);
+  //   console.log(e);
   const rewindTime = (e.offsetX / progress.offsetWidth) * AUDIO.duration;
   AUDIO.currentTime = rewindTime;
 }
-
 
 progress.addEventListener("click", rewindAudio);
 progress.addEventListener("mousemove", (e) => {

@@ -93,7 +93,7 @@
     }
 
     .question-player {
-      @include flex-row();
+      @include flex-column();
       width: 100%;
       border-top: 1px solid #212a43;
       padding: 1rem 0;

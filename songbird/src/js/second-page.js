@@ -1,6 +1,7 @@
 import { birdsDataEn } from "./dataBirds";
-import { AUDIO, buttonPlay } from "./player";
+import { AUDIO, buttonPlay, visibleDuration } from "./player";
 import { BTN_PLAY_AGAIN, showScore } from "./third-page";
+import { getTime } from "./helpers";
 
 const SCORE_INPUT = document.querySelector(".nav-score");
 const SCORE_VALUE = document.querySelector(".nav-input");
@@ -52,6 +53,14 @@ function setStartStyles() {
   smallPlayer.classList.add("hidden");
   BTN_NEXT.disabled = true;
   BTN_NEXT.innerHTML = "next level";
+
+  AUDIO.addEventListener('loadedmetadata', ()=>{
+    visibleDuration.innerHTML = getTime(AUDIO.duration);
+  });
+  buttonPlay.classList.remove("pausebtn");
+    
+//   console.log(AUDIO.duration);
+//   visibleDuration.innerHTML = getTime(AUDIO.duration);  
 }
 
 //---------отобразить текущую выбранную птицу

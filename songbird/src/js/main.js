@@ -64,5 +64,5 @@ function setBirdAndLevel() {
           item.innerHTML = `${birdsDataEn[currLevel][index].name}`;
         });
     }
-    console.log(currBirdNumber);
+    console.log("загаданная птица", currBirdNumber);
 }

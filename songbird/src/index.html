@@ -94,21 +94,24 @@
             <!--QUESTION-->
             <div class="question">
               <div class="question-image">
-                <!-- <img
-                  class="question-picture"
-                  src="./assets/images/guess-bird.png"
-                  alt="any-bird"
-                /> -->
               </div>
 
               <div class="question-task">
                 <p class="question-name"></p>
+                <!--PLAYER-->
                 <div class="question-player">
                   <div class="player-controls">
                     <div class="player-button playbtn" data-video="false"></div>
-                    <div class="progress">
-                      <div class="progress-filled"></div>
+                    <div class="progress-time">
+                      <div class="progress">
+                        <div class="progress-filled"></div>
+                      </div>
+                      <div class="time">
+                        <p class="curr-time">00:00</p>
+                        <p class="duration"></p>
+                      </div>
                     </div>
+                    
                     <div class="volume-button volumebtn"></div>
                     <input
                       type="range"
@@ -120,6 +123,7 @@
                       value="0.5"
                     />
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -202,11 +206,6 @@
               <div class="answer-description answer-items">
                 <div class="answer-title">
                   <div class="answer-image">
-                    <!-- <img
-                      class="answer-picture"
-                      src="./assets/images/bird.jpg"
-                      alt="bird-image"
-                    /> -->
                   </div>
                   <div class="answer-info">
                     <p class="name"></p>

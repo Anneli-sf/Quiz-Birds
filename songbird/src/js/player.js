@@ -1,4 +1,5 @@
 import { birdsDataEn } from "./dataBirds";
+import { getTime } from "./helpers";
 import { getRandomValue } from "./helpers";
 import { BTN_NEXT } from "./second-page";
 
@@ -9,6 +10,8 @@ const progressOfAudio = player.querySelector(".progress-filled");
 const buttonPlay = player.querySelector(".playbtn");
 const buttonVolume = player.querySelector(".volumebtn");
 const volumeLevel = player.querySelector(".volume-level");
+const visibleCurrTime = document.querySelector(".curr-time");
+const visibleDuration = document.querySelector(".duration");
 
 const AUDIO = new Audio();
 // let currLevel = 0;
@@ -82,14 +85,19 @@ function muteVolume() {
 function audioProgress() {
   let currProgress = (AUDIO.currentTime / AUDIO.duration) * 100;
   progressOfAudio.style.flexBasis = `${currProgress}%`;
-//   console.log(currProgress);
+//   console.log("AUDIO.duration",AUDIO.duration);
+//   console.log("AUDIO.currentTime",AUDIO.currentTime);
   
   if (currProgress == 100) buttonPlay.classList.remove("pausebtn");
+
+  visibleCurrTime.innerHTML = getTime(AUDIO.currentTime);
+//   visibleDuration.innerHTML = getTime(AUDIO.duration);  
 
   BTN_NEXT.addEventListener("click", () => {
     progressOfAudio.style.flexBasis = `0%`;
   });
 }
+
 
 //перемотка видео
 
@@ -108,4 +116,4 @@ progress.addEventListener("mousemove", (e) => {
 progress.addEventListener("mousedown", () => (mousedown = true));
 progress.addEventListener("mouseup", () => (mousedown = false));
 
-export { AUDIO, buttonPlay };
+export { AUDIO, buttonPlay, visibleDuration };

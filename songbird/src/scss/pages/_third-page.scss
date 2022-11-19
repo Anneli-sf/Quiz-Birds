@@ -14,6 +14,11 @@
         color: $colorMainDark;
         //   display: none;
         @include transition();
+        @include visible();
+
+        &.hidden {
+          @include hidden();
+        }
       
         .finish-input {
           font-family: inherit;

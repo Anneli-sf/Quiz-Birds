@@ -30,7 +30,7 @@ let currBirdNumber = 0;
 
 BTN_NEXT.addEventListener("click", () => {
   if (currLevel == 5) {
-    switchToThirdPage();
+    switchToThirdPage(score);
   }
 
   startGame();
@@ -41,18 +41,18 @@ BTN_NEXT.addEventListener("click", () => {
 BTN_PLAY.addEventListener("click", () => {
   switchToSecondPage();
   setBirdAndLevel();
-
-  //   console.log("bird Id",birdsDataEn[currLevel][currBirdNumber].id);
-  //   console.log("bird name",birdsDataEn[currLevel][currBirdNumber].name);
 });
 
-BTN_PLAY_AGAIN.addEventListener("click", switchToStartPage);
+BTN_PLAY_AGAIN.addEventListener("click", () => {
+    currLevel = 0;
+    switchToStartPage();
+    setBirdAndLevel();
+});
 
 //-----------клик по вариантам названий птиц
 NAMES.addEventListener("click", (e) => {
   showChosenBird(e, currLevel, currBirdNumber);
-  console.log(score);
-  //   markCurrAnswer(e, currLevel, currBirdNumber);
+//   console.log(score);
 });
 
 function setBirdAndLevel() {
@@ -64,4 +64,5 @@ function setBirdAndLevel() {
           item.innerHTML = `${birdsDataEn[currLevel][index].name}`;
         });
     }
+    console.log(currBirdNumber);
 }

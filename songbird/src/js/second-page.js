@@ -1,6 +1,6 @@
 import { birdsDataEn } from "./dataBirds";
 import { AUDIO, buttonPlay } from "./player";
-import { showScore } from "./third-page";
+import { BTN_PLAY_AGAIN, showScore } from "./third-page";
 
 const SCORE_INPUT = document.querySelector(".nav-score");
 const SCORE_VALUE = document.querySelector(".nav-input");
@@ -22,13 +22,19 @@ const currBirdName = document.querySelector(".name");
 const currBirdSpecies = document.querySelector(".latin-name");
 const currBirdInfo = document.querySelector(".answer-text");
 
+let counter = 0;
+let score = 0;
+const winAudio = new Audio();
+const failAudio = new Audio();
+winAudio.src = "../assets/sound/win.mp3";
+failAudio.src = "../assets/sound/fail.mp3";
+
 //-----написание адреса картинки  GUESS_IMAGE.style.backgroundImage = `url("${birdsDataEn[0][0].image}")`;
 
 function startGame() {
   BTNS_LEVEL.forEach((el) => el.classList.remove("active"));
 
   NAMES_COLL.forEach((item, index) => {
-    // item.innerHTML = `${birdsDataEn[0][index].name}`;
     item.classList.remove("true");
     item.classList.remove("false");
   });
@@ -48,13 +54,6 @@ function setStartStyles() {
   BTN_NEXT.innerHTML = "next level";
 }
 
-let counter = 0;
-let score = 0;
-const winAudio = new Audio();
-const failAudio = new Audio();
-winAudio.src = "../assets/sound/win.mp3";
-failAudio.src = "../assets/sound/fail.mp3";
-
 //---------отобразить текущую выбранную птицу
 function showChosenBird(e, currLevel, currBirdNumber) {
   let currVariant = e.target;
@@ -72,27 +71,6 @@ function showChosenBird(e, currLevel, currBirdNumber) {
 }
 
 //-------подсветка верного-неверного ответа
-// function markCurrAnswer(e, currLevel, currBirdNumber) {
-//   let currVariantName = e.target.closest("label");
-//   let currId;
-
-//   if (currVariantName) {
-//     currId = e.target.id.slice(6);
-//     counter++;
-//     console.log(counter);
-//     //   console.log("curr name chosen id", currId);
-//     // console.log(currVariantName);
-//     if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
-//       currVariantName.classList.add("true");
-//       showGuessedBird(currBirdNumber, currLevel);
-//       showCurrScore(counter);
-//       counter = 0;
-//       BTN_NEXT.disabled = false;
-//     } else {
-//       currVariantName.classList.add("false");
-//     }
-//   }
-// }
 
 function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
   let currVariantName = currVariant.closest("label");
@@ -101,26 +79,25 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
   if (currVariant.closest("label")) {
     currId = currVariant.id.slice(6);
     counter++;
-    console.log(counter);
-    //   console.log("curr name chosen id", currId);
-    // console.log(currVariantName);
+    // console.log(counter);
+    // console.log("curr name chosen id", currId);
+    // console.log("level", currLevel);
+    // console.log("BirdNumber", currBirdNumber);
     if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
-     
-        currVariantName.classList.add("true");
-        AUDIO.pause();
-        buttonPlay.classList.remove("pausebtn");
-        winAudio.play();
-        showGuessedBird(currBirdNumber, currLevel);
-        showCurrScore(counter);
-        counter = 0;
-        BTN_NEXT.disabled = false;
+      currVariantName.classList.add("true");
+      AUDIO.pause();
+      buttonPlay.classList.remove("pausebtn");
+      winAudio.play();
+      showGuessedBird(currBirdNumber, currLevel);
+      showCurrScore(counter);
+      counter = 0;
+      BTN_NEXT.disabled = false;
 
-        if (currLevel == 5) {
-            // switchToThirdPage();
-            BTN_NEXT.innerHTML = "see the result";
-            showScore(score);
-          } 
-      
+      if (currLevel == 5) {
+        // switchToThirdPage();
+        BTN_NEXT.innerHTML = "see the result";
+        showScore(score);
+      }
     } else {
       currVariantName.classList.add("false");
       failAudio.play();
@@ -148,6 +125,10 @@ function showCurrScore(counter) {
     default:
       score = score + 0;
   }
+
+  BTN_PLAY_AGAIN.addEventListener("click", () => {
+    score = 0;
+  });
   //   console.log(score);
   SCORE_VALUE.value = score;
 }

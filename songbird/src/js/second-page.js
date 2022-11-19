@@ -1,5 +1,6 @@
 import { birdsDataEn } from "./dataBirds";
 import { AUDIO, buttonPlay } from "./player";
+import { showScore } from "./third-page";
 
 const SCORE_INPUT = document.querySelector(".nav-score");
 const SCORE_VALUE = document.querySelector(".nav-input");
@@ -27,7 +28,7 @@ function startGame() {
   BTNS_LEVEL.forEach((el) => el.classList.remove("active"));
 
   NAMES_COLL.forEach((item, index) => {
-    item.innerHTML = `${birdsDataEn[0][index].name}`;
+    // item.innerHTML = `${birdsDataEn[0][index].name}`;
     item.classList.remove("true");
     item.classList.remove("false");
   });
@@ -44,6 +45,7 @@ function setStartStyles() {
   currBirdSpecies.classList.add("hidden");
   smallPlayer.classList.add("hidden");
   BTN_NEXT.disabled = true;
+  BTN_NEXT.innerHTML = "next level";
 }
 
 let counter = 0;
@@ -97,21 +99,28 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
   let currId;
 
   if (currVariant.closest("label")) {
-    let inputStyle = getComputedStyle(currVariantName, "::after");
     currId = currVariant.id.slice(6);
     counter++;
     console.log(counter);
     //   console.log("curr name chosen id", currId);
     // console.log(currVariantName);
     if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
-      currVariantName.classList.add("true");
-      AUDIO.pause();
-      buttonPlay.classList.remove("pausebtn");
-      winAudio.play();
-      showGuessedBird(currBirdNumber, currLevel);
-      showCurrScore(counter);
-      counter = 0;
-      BTN_NEXT.disabled = false;
+     
+        currVariantName.classList.add("true");
+        AUDIO.pause();
+        buttonPlay.classList.remove("pausebtn");
+        winAudio.play();
+        showGuessedBird(currBirdNumber, currLevel);
+        showCurrScore(counter);
+        counter = 0;
+        BTN_NEXT.disabled = false;
+
+        if (currLevel == 5) {
+            // switchToThirdPage();
+            BTN_NEXT.innerHTML = "see the result";
+            showScore(score);
+          } 
+      
     } else {
       currVariantName.classList.add("false");
       failAudio.play();
@@ -169,6 +178,7 @@ export {
   GUESS_IMAGE,
   BTNS_LEVEL,
   ALL_LEVELS,
+  NAMES_COLL,
   NAMES,
   SCORE_VALUE,
   currBirdImage,
@@ -176,6 +186,7 @@ export {
   currBirdSpecies,
   currBirdInfo,
   smallPlayer,
+  score,
   startGame,
   showChosenBird,
   markCurrAnswer,

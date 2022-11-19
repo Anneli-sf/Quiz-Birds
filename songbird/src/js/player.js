@@ -81,16 +81,14 @@ function muteVolume() {
 
 function audioProgress() {
   let currProgress = (AUDIO.currentTime / AUDIO.duration) * 100;
-
-  
-  console.log(currProgress);
   progressOfAudio.style.flexBasis = `${currProgress}%`;
+//   console.log(currProgress);
+  
+  if (currProgress == 100) buttonPlay.classList.remove("pausebtn");
+
   BTN_NEXT.addEventListener("click", () => {
     progressOfAudio.style.flexBasis = `0%`;
   });
-  
-
-  if (currProgress == 100) buttonPlay.classList.remove("pausebtn");
 }
 
 //перемотка видео

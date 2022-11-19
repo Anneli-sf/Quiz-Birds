@@ -1,4 +1,5 @@
 import { birdsDataEn } from "./dataBirds";
+import { AUDIO, buttonPlay } from "./player";
 
 const SCORE_INPUT = document.querySelector(".nav-score");
 const SCORE_VALUE = document.querySelector(".nav-input");
@@ -39,6 +40,10 @@ function startGame() {
 
 let counter = 0;
 let score = 0;
+const winAudio = new Audio();
+const failAudio = new Audio();
+winAudio.src = "../assets/sound/win.mp3";
+failAudio.src = "../assets/sound/fail.mp3";
 
 //---------отобразить текущую выбранную птицу
 function showChosenBird(e, currLevel, currBirdNumber) {
@@ -95,15 +100,16 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
       // console.log(currVariantName);
       if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
         currVariantName.classList.add("true");
-        // console.log(inputStyle.borderLeft = "4px solid #red");
-        // inputStyle.borderLeft = "4px solid #red";
+        AUDIO.pause();
+        buttonPlay.classList.remove("pausebtn");
+        winAudio.play();
         showGuessedBird(currBirdNumber, currLevel);
-      
         showCurrScore(counter);
         counter = 0;
         BTN_NEXT.disabled = false;
       } else {
         currVariantName.classList.add("false");
+        failAudio.play();
       }
     }
   }

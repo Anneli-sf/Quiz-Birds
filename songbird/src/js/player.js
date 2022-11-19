@@ -112,4 +112,4 @@ progress.addEventListener("mousemove", (e) => {
 progress.addEventListener("mousedown", () => (mousedown = true));
 progress.addEventListener("mouseup", () => (mousedown = false));
 
-export { AUDIO };
+export { AUDIO, buttonPlay };

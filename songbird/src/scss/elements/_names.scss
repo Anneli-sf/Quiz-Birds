@@ -84,13 +84,13 @@ input[type="checkbox"]:not(:checked) + label:after {
 }
 
 input[type="checkbox"]:checked + label.true:after {
-  border-left: 4px solid  green;
-  border-bottom: 4px solid  green;
+  border-left: 4px solid green;
+  border-bottom: 4px solid green;
 }
 
 input[type="checkbox"]:checked + label.false:after {
-  border-left: 4px solid  #a00d3f;
-  border-bottom: 4px solid  #a00d3f;
+  border-left: 4px solid #a00d3f;
+  border-bottom: 4px solid #a00d3f;
 }
 
 input[type="checkbox"]:not(:checked) + label:after {
@@ -104,8 +104,6 @@ input[type="checkbox"]:checked + label:after {
 .show-inputs label {
   margin-left: 10px;
   cursor: pointer;
-
-  
 }
 
 .answer-name {

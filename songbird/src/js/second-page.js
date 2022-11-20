@@ -1,5 +1,5 @@
 import { birdsDataEn } from "./dataBirds";
-import { AUDIO, buttonPlay, visibleDuration } from "./player";
+import { AUDIO, AUDIO_SMALL, buttonPlay, buttonPlaySmall, visibleDuration, visibleDurationSmall } from "./player";
 import { BTN_PLAY_AGAIN, showScore } from "./third-page";
 import { getTime } from "./helpers";
 
@@ -150,6 +150,7 @@ function showGuessedBird(currBirdNumber, currLevel) {
 
 //----------------отобразить инфо о птице
 function showBirdInfo(currLevel, currId) {
+  
   currBirdName.classList.remove("hidden");
   currBirdSpecies.classList.remove("hidden");
   smallPlayer.classList.remove("hidden");
@@ -159,6 +160,13 @@ function showBirdInfo(currLevel, currId) {
   currBirdName.innerHTML = `${birdsDataEn[currLevel][currId - 1].name}`;
   currBirdSpecies.innerHTML = `${birdsDataEn[currLevel][currId - 1].species}`;
   currBirdInfo.innerHTML = `${birdsDataEn[currLevel][currId - 1].description}`;
+
+  buttonPlaySmall.classList.remove("pausebtn");  
+  AUDIO_SMALL.src = birdsDataEn[currLevel][currId - 1].audio;
+  AUDIO_SMALL.addEventListener('loadedmetadata', ()=>{
+    visibleDurationSmall.innerHTML = getTime(AUDIO_SMALL.duration);
+  });
+
 }
 
 export {

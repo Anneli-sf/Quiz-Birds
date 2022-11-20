@@ -100,23 +100,24 @@
                 <p class="question-name"></p>
                 <!--PLAYER-->
                 <div class="question-player">
-                  <div class="player-controls">
-                    <div class="player-button playbtn" data-video="false"></div>
-                    <div class="progress-time">
-                      <div class="progress">
-                        <div class="progress-filled"></div>
+                  <div class="player-controls" id="player-controls">
+                    <div class="player-button playbtn" id="playbtn" data-video="false"></div>
+                    <div class="progress-time" id="progress-time">
+                      <div class="progress" id="progress">
+                        <div class="progress-filled" id="progress-filled"></div>
                       </div>
                       <div class="time">
-                        <p class="curr-time">00:00</p>
-                        <p class="duration"></p>
+                        <p class="curr-time" id="curr-time">00:00</p>
+                        <p class="duration" id="duration"></p>
                       </div>
                     </div>
                     
-                    <div class="volume-button volumebtn"></div>
+                    <div class="volume-button volumebtn" id="volumebtn"></div>
                     <input
                       type="range"
                       name="volume"
                       class="volume-level"
+                      id="volume-level"
                       min="0"
                       max="1"
                       step="0.1"
@@ -210,30 +211,33 @@
                   <div class="answer-info">
                     <p class="name"></p>
                     <p class="latin-name"></p>
+                     <!--SMALL PLAYER-->
                     <div class="player-controls small-player-controls">
                       <div
                         class="player-button playbtn small-player-button"
+                        id="small-playbtn"
                         data-video="false"
                       ></div>
                       <div class="progress-time small-progress-time">
-                        <div class="progress small-progress">
+                        <div class="progress small-progress" id="small-progress">
                           <div
-                            class="progress-filled small-progress-filled"
+                            class="progress-filled small-progress-filled" id="small-progress-filled"
                           ></div>
                         </div>
                         <div class="time">
-                          <p class="small-curr-time curr-time">00:00</p>
-                          <p class="small-duration duration"></p>
+                          <p class="small-curr-time curr-time" id="small-curr-time">00:00</p>
+                          <p class="small-duration duration" id="small-duration"></p>
                         </div>
                       </div>
                       
                       <div
-                        class="volume-button volumebtn small-volume-button"
+                        class="volume-button volumebtn small-volume-button" id="small-volumebtn"
                       ></div>
                       <input
                         type="range"
                         name="volume"
                         class="volume-level small-volume-level"
+                        id="small-volume-level"
                         min="0"
                         max="1"
                         step="0.1"

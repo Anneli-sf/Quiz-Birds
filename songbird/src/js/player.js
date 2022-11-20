@@ -1,36 +1,38 @@
 import { birdsDataEn } from "./dataBirds";
 import { getTime } from "./helpers";
 import { getRandomValue } from "./helpers";
-import { BTN_NEXT } from "./second-page";
+import { BTN_NEXT, NAMES_COLL } from "./second-page";
 
 //----------------MAIN PLAYER
-const player = document.querySelector(".player-controls");
-const progress = player.querySelector(".progress");
-const progressOfAudio = player.querySelector(".progress-filled");
+const progress = document.querySelector("#progress");
+const progressOfAudio = document.querySelector("#progress-filled");
 
-const buttonPlay = player.querySelector(".playbtn");
-const buttonVolume = player.querySelector(".volumebtn");
-const volumeLevel = player.querySelector(".volume-level");
-const visibleCurrTime = document.querySelector(".small-curr-time");
-const visibleDuration = document.querySelector(".small-duration");
+const buttonPlay = document.querySelector("#playbtn");
+const buttonVolume = document.querySelector("#volumebtn");
+const volumeLevel = document.querySelector("#volume-level");
+const visibleCurrTime = document.querySelector("#curr-time");
+const visibleDuration = document.querySelector("#duration");
 
 const AUDIO = new Audio();
 // console.log(AUDIO.src);
 
 //-----------------small PLAYER
-const playerSmall = document.querySelector(".small-player-controls");
-const progressSmall = playerSmall.querySelector(".small-progress");
-const progressSmallOfAudio = playerSmall.querySelector(".small-progress-filled");
+const progressSmall = document.querySelector("#small-progress");
+const progressSmallOfAudio = document.querySelector("#small-progress-filled");
 
-const buttonPlaySmall = playerSmall.querySelector(".small-player-button");
-const buttonVolumeSmall = playerSmall.querySelector(".small-volume-button");
-const volumeLevelSmall = playerSmall.querySelector(".small-volume-level");
-const visibleCurrTimeSmall = document.querySelector(".curr-time");
-const visibleDurationSmall = document.querySelector(".duration");
+const buttonPlaySmall = document.querySelector("#small-playbtn");
+const buttonVolumeSmall = document.querySelector("#small-volumebtn");
+const volumeLevelSmall = document.querySelector("#small-volume-level");
+const visibleCurrTimeSmall = document.querySelector("#small-curr-time");
+const visibleDurationSmall = document.querySelector("#small-duration");
 
 const AUDIO_SMALL = new Audio();
-AUDIO_SMALL.src = birdsDataEn[0][0].audio;
+// AUDIO_SMALL.src = birdsDataEn[0][0].audio;
 console.log(AUDIO_SMALL.src);
+
+let currentVolume;
+let currentValue;
+let mousedown = false;
 
 //----------------MAIN PLAYER
 buttonPlay.addEventListener("click", () => {
@@ -43,10 +45,10 @@ volumeLevel.addEventListener("mousemove", (e) => {
   changeVolume(e, AUDIO, buttonVolume);
 });
 buttonVolume.addEventListener("click", () => {
-  muteVolume(AUDIO, buttonVolume, volumeLevel);
+  muteVolume(AUDIO, buttonVolume, volumeLevel, currentVolume, currentValue);
 });
 AUDIO.addEventListener("timeupdate", () => {
-  audioProgress(AUDIO, progressOfAudio, visibleCurrTime);
+  audioProgress(AUDIO, progressOfAudio, visibleCurrTime, buttonPlay);
 });
 volumeLevel.addEventListener("input", volumeProgress);
 progress.addEventListener("click", (e) => {
@@ -60,6 +62,10 @@ progress.addEventListener("mousemove", (e) => {
 progress.addEventListener("mousedown", () => (mousedown = true));
 progress.addEventListener("mouseup", () => (mousedown = false));
 
+let currentVolumeSmall;
+let currentValueSmall;
+let mousedownSmall = false;
+
 //-----------------small PLAYER
 buttonPlaySmall.addEventListener("click", () => {
   playAudio(AUDIO_SMALL, buttonPlaySmall);
@@ -71,28 +77,36 @@ volumeLevelSmall.addEventListener("mousemove", (e) => {
   changeVolume(e, AUDIO_SMALL, buttonVolumeSmall);
 });
 buttonVolumeSmall.addEventListener("click", () => {
-  muteVolume(AUDIO_SMALL, buttonVolumeSmall, volumeLevelSmall);
+  muteVolume(
+    AUDIO_SMALL,
+    buttonVolumeSmall,
+    volumeLevelSmall,
+    currentVolumeSmall,
+    currentValueSmall
+  );
 });
 AUDIO_SMALL.addEventListener("timeupdate", () => {
-  audioProgress(AUDIO_SMALL, progressSmallOfAudio, visibleCurrTimeSmall);
+  audioProgress(
+    AUDIO_SMALL,
+    progressSmallOfAudio,
+    visibleCurrTimeSmall,
+    buttonPlaySmall
+  );
 });
 volumeLevelSmall.addEventListener("input", volumeProgress);
 progressSmall.addEventListener("click", (e) => {
   rewindAudio(e, AUDIO_SMALL);
 });
 progressSmall.addEventListener("mousemove", (e) => {
-  if (mousedown) {
+  if (mousedownSmall) {
     rewindAudio(e, AUDIO_SMALL);
   }
 });
-progressSmall.addEventListener("mousedown", () => (mousedown = true));
-progressSmall.addEventListener("mouseup", () => (mousedown = false));
+progressSmall.addEventListener("mousedown", () => (mousedownSmall = true));
+progressSmall.addEventListener("mouseup", () => (mousedownSmall = false));
 
 //-------------------------------------------------------------------
 
-let currentVolume;
-let currentValue;
-let mousedown = false;
 //воспроизведение видео
 function playAudio(track, btnPlay) {
   if (track.paused) {
@@ -125,18 +139,18 @@ function volumeProgress() {
 }
 
 //кнопка звука
-function muteVolume(track, btnVolume, volLvl) {
+function muteVolume(track, btnVolume, volLvl, currVol, currVal) {
   if (track.volume !== 0) {
-    currentVolume = track.volume;
+    currVol = track.volume;
     track.volume = 0;
     btnVolume.classList.add("mute");
-    currentValue = volLvl.value;
+    currVal = volLvl.value;
     volLvl.value = 0;
     volLvl.style.background = `linear-gradient( to right, #212a43 0%, #212a43 0%, #fff 0%, #fff 0% )`;
   } else {
-    track.volume = currentVolume;
+    track.volume = currVol;
     btnVolume.classList.remove("mute");
-    volLvl.value = currentValue;
+    volLvl.value = currVal;
     volLvl.style.background = `linear-gradient( to right, #212a43 0%, #212a43 ${
       volLvl.value * 100
     }%, #fff ${volLvl.value * 100}%, #fff 100% )`;
@@ -144,19 +158,27 @@ function muteVolume(track, btnVolume, volLvl) {
 }
 
 //прогресс-бар
-function audioProgress(track, audioProgr, time) {
+function audioProgress(track, audioProgr, time, btnPlay) {
   let currProgress = (track.currentTime / track.duration) * 100;
   audioProgr.style.flexBasis = `${currProgress}%`;
   //   console.log("AUDIO.duration",AUDIO.duration);
   //   console.log("AUDIO.currentTime",AUDIO.currentTime);
 
-  if (currProgress == 100) buttonPlay.classList.remove("pausebtn");
+  if (currProgress == 100) btnPlay.classList.remove("pausebtn");
 
   time.innerHTML = getTime(track.currentTime);
   //   visibleDuration.innerHTML = getTime(AUDIO.duration);
 
   BTN_NEXT.addEventListener("click", () => {
     audioProgr.style.flexBasis = `0%`;
+    AUDIO.pause();
+    AUDIO_SMALL.pause();
+  });
+
+  NAMES_COLL.forEach((item) => {
+    item.addEventListener("click", () => {
+      audioProgr.style.flexBasis = `0%`;
+    });
   });
 }
 
@@ -168,4 +190,11 @@ function rewindAudio(e, track) {
   track.currentTime = rewindTime;
 }
 
-export { AUDIO, AUDIO_SMALL, buttonPlay, visibleDuration };
+export {
+  AUDIO,
+  AUDIO_SMALL,
+  buttonPlay,
+  buttonPlaySmall,
+  visibleDuration,
+  visibleDurationSmall,
+};

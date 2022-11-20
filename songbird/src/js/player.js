@@ -20,100 +20,112 @@ const AUDIO = new Audio();
 // AUDIO.src = birdsDataEn[currLevel][currBirdAudio].audio;
 
 // console.log(AUDIO.src);
-buttonPlay.addEventListener("click", playAudio);
-volumeLevel.addEventListener("change", changeVolume);
-volumeLevel.addEventListener("mousemove", changeVolume);
-buttonVolume.addEventListener("click", muteVolume);
-AUDIO.addEventListener("timeupdate", audioProgress);
+buttonPlay.addEventListener("click", () => {
+  playAudio(AUDIO, buttonPlay);
+});
+volumeLevel.addEventListener("change", (e) => {
+  changeVolume(e, AUDIO, buttonVolume);
+});
+volumeLevel.addEventListener("mousemove", (e) => {
+  changeVolume(e, AUDIO, buttonVolume);
+});
+buttonVolume.addEventListener("click", () => {
+  muteVolume(AUDIO, buttonVolume, volumeLevel);
+});
+AUDIO.addEventListener("timeupdate", () => {
+  audioProgress(AUDIO, progressOfAudio, visibleCurrTime);
+});
+volumeLevel.addEventListener("input", volumeProgress);
+progress.addEventListener("click", (e) => {
+    rewindAudio(e, AUDIO);
+  });
+  progress.addEventListener("mousemove", (e) => {
+    if (mousedown) {
+      rewindAudio(e, AUDIO);
+    }
+  });
+  progress.addEventListener("mousedown", () => (mousedown = true));
+  progress.addEventListener("mouseup", () => (mousedown = false));
 
 let currentVolume;
 let currentValue;
 let mousedown = false;
 
 //воспроизведение видео
-function playAudio() {
-  if (AUDIO.paused) {
-    AUDIO.play();
-    buttonPlay.classList.add("pausebtn");
+function playAudio(track, btnPlay) {
+  if (track.paused) {
+    track.play();
+    btnPlay.classList.add("pausebtn");
   } else {
-    AUDIO.pause();
-    buttonPlay.classList.remove("pausebtn");
+    track.pause();
+    btnPlay.classList.remove("pausebtn");
   }
 }
 
 //звук видео
-function changeVolume() {
-  AUDIO.volume = this.value; //регулирование громкости
+function changeVolume(e, track, btnVolume) {
+  track.volume = e.target.value; //регулирование громкости
+//   AUDIO.volume = this.value; //регулирование громкости
 
-  if (this.value === this.min) {
+  if (e.target.value === e.target.min) {
     //мьют при отст звука
-    buttonVolume.classList.add("mute");
-  } else buttonVolume.classList.remove("mute");
+    btnVolume.classList.add("mute");
+  } else btnVolume.classList.remove("mute");
 }
 
 //цвет ползунка звука
-volumeLevel.addEventListener("input", function () {
-  const value = this.value;
-//   console.log(value);
-  this.style.background = `linear-gradient( to right, #212a43 0%, #212a43 ${
-    value * 100
-  }%, #fff ${value * 100}%, #fff 100% )`;
-});
+function volumeProgress() {
+    const value = this.value;
+    //   console.log(value);
+    this.style.background = `linear-gradient( to right, #212a43 0%, #212a43 ${
+      value * 100
+    }%, #fff ${value * 100}%, #fff 100% )`;
+}
 
 //кнопка звука
-
-function muteVolume() {
-  if (AUDIO.volume !== 0) {
-    currentVolume = AUDIO.volume;
-    AUDIO.volume = 0;
-    buttonVolume.classList.add("mute");
-    currentValue = volumeLevel.value;
-    volumeLevel.value = 0;
-    volumeLevel.style.background = `linear-gradient( to right, #212a43 0%, #212a43 0%, #fff 0%, #fff 0% )`;
+function muteVolume(track, btnVolume, volLvl) {
+  if (track.volume !== 0) {
+    currentVolume = track.volume;
+    track.volume = 0;
+    btnVolume.classList.add("mute");
+    currentValue = volLvl.value;
+    volLvl.value = 0;
+    volLvl.style.background = `linear-gradient( to right, #212a43 0%, #212a43 0%, #fff 0%, #fff 0% )`;
   } else {
-    AUDIO.volume = currentVolume;
-    buttonVolume.classList.remove("mute");
-    volumeLevel.value = currentValue;
-    volumeLevel.style.background = `linear-gradient( to right, #212a43 0%, #212a43 ${
-      volumeLevel.value * 100
-    }%, #fff ${volumeLevel.value * 100}%, #fff 100% )`;
+    track.volume = currentVolume;
+    btnVolume.classList.remove("mute");
+    volLvl.value = currentValue;
+    volLvl.style.background = `linear-gradient( to right, #212a43 0%, #212a43 ${
+        volLvl.value * 100
+    }%, #fff ${volLvl.value * 100}%, #fff 100% )`;
   }
 }
 
 //прогресс-бар
+function audioProgress(track, audioProgr, time) {
+  let currProgress = (track.currentTime / track.duration) * 100;
+  audioProgr.style.flexBasis = `${currProgress}%`;
+  //   console.log("AUDIO.duration",AUDIO.duration);
+  //   console.log("AUDIO.currentTime",AUDIO.currentTime);
 
-function audioProgress() {
-  let currProgress = (AUDIO.currentTime / AUDIO.duration) * 100;
-  progressOfAudio.style.flexBasis = `${currProgress}%`;
-//   console.log("AUDIO.duration",AUDIO.duration);
-//   console.log("AUDIO.currentTime",AUDIO.currentTime);
-  
   if (currProgress == 100) buttonPlay.classList.remove("pausebtn");
 
-  visibleCurrTime.innerHTML = getTime(AUDIO.currentTime);
-//   visibleDuration.innerHTML = getTime(AUDIO.duration);  
+  time.innerHTML = getTime(track.currentTime);
+  //   visibleDuration.innerHTML = getTime(AUDIO.duration);
 
   BTN_NEXT.addEventListener("click", () => {
-    progressOfAudio.style.flexBasis = `0%`;
+    audioProgr.style.flexBasis = `0%`;
   });
 }
 
-
 //перемотка видео
 
-function rewindAudio(e) {
+function rewindAudio(e, track) {
   //   console.log(e);
-  const rewindTime = (e.offsetX / progress.offsetWidth) * AUDIO.duration;
-  AUDIO.currentTime = rewindTime;
+  const rewindTime = (e.offsetX / progress.offsetWidth) * track.duration;
+  track.currentTime = rewindTime;
 }
 
-progress.addEventListener("click", rewindAudio);
-progress.addEventListener("mousemove", (e) => {
-  if (mousedown) {
-    rewindAudio(e);
-  }
-});
-progress.addEventListener("mousedown", () => (mousedown = true));
-progress.addEventListener("mouseup", () => (mousedown = false));
+
 
 export { AUDIO, buttonPlay, visibleDuration };

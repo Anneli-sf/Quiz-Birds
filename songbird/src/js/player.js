@@ -3,6 +3,7 @@ import { getTime } from "./helpers";
 import { getRandomValue } from "./helpers";
 import { BTN_NEXT } from "./second-page";
 
+//----------------MAIN PLAYER
 const player = document.querySelector(".player-controls");
 const progress = player.querySelector(".progress");
 const progressOfAudio = player.querySelector(".progress-filled");
@@ -10,16 +11,28 @@ const progressOfAudio = player.querySelector(".progress-filled");
 const buttonPlay = player.querySelector(".playbtn");
 const buttonVolume = player.querySelector(".volumebtn");
 const volumeLevel = player.querySelector(".volume-level");
-const visibleCurrTime = document.querySelector(".curr-time");
-const visibleDuration = document.querySelector(".duration");
+const visibleCurrTime = document.querySelector(".small-curr-time");
+const visibleDuration = document.querySelector(".small-duration");
 
 const AUDIO = new Audio();
-// let currLevel = 0;
-// let currBirdAudio = getRandomValue(0, 5);
-
-// AUDIO.src = birdsDataEn[currLevel][currBirdAudio].audio;
-
 // console.log(AUDIO.src);
+
+//-----------------small PLAYER
+const playerSmall = document.querySelector(".small-player-controls");
+const progressSmall = playerSmall.querySelector(".small-progress");
+const progressSmallOfAudio = playerSmall.querySelector(".small-progress-filled");
+
+const buttonPlaySmall = playerSmall.querySelector(".small-player-button");
+const buttonVolumeSmall = playerSmall.querySelector(".small-volume-button");
+const volumeLevelSmall = playerSmall.querySelector(".small-volume-level");
+const visibleCurrTimeSmall = document.querySelector(".curr-time");
+const visibleDurationSmall = document.querySelector(".duration");
+
+const AUDIO_SMALL = new Audio();
+AUDIO_SMALL.src = birdsDataEn[0][0].audio;
+console.log(AUDIO_SMALL.src);
+
+//----------------MAIN PLAYER
 buttonPlay.addEventListener("click", () => {
   playAudio(AUDIO, buttonPlay);
 });
@@ -37,20 +50,49 @@ AUDIO.addEventListener("timeupdate", () => {
 });
 volumeLevel.addEventListener("input", volumeProgress);
 progress.addEventListener("click", (e) => {
+  rewindAudio(e, AUDIO);
+});
+progress.addEventListener("mousemove", (e) => {
+  if (mousedown) {
     rewindAudio(e, AUDIO);
-  });
-  progress.addEventListener("mousemove", (e) => {
-    if (mousedown) {
-      rewindAudio(e, AUDIO);
-    }
-  });
-  progress.addEventListener("mousedown", () => (mousedown = true));
-  progress.addEventListener("mouseup", () => (mousedown = false));
+  }
+});
+progress.addEventListener("mousedown", () => (mousedown = true));
+progress.addEventListener("mouseup", () => (mousedown = false));
+
+//-----------------small PLAYER
+buttonPlaySmall.addEventListener("click", () => {
+  playAudio(AUDIO_SMALL, buttonPlaySmall);
+});
+volumeLevelSmall.addEventListener("change", (e) => {
+  changeVolume(e, AUDIO_SMALL, buttonVolumeSmall);
+});
+volumeLevelSmall.addEventListener("mousemove", (e) => {
+  changeVolume(e, AUDIO_SMALL, buttonVolumeSmall);
+});
+buttonVolumeSmall.addEventListener("click", () => {
+  muteVolume(AUDIO_SMALL, buttonVolumeSmall, volumeLevelSmall);
+});
+AUDIO_SMALL.addEventListener("timeupdate", () => {
+  audioProgress(AUDIO_SMALL, progressSmallOfAudio, visibleCurrTimeSmall);
+});
+volumeLevelSmall.addEventListener("input", volumeProgress);
+progressSmall.addEventListener("click", (e) => {
+  rewindAudio(e, AUDIO_SMALL);
+});
+progressSmall.addEventListener("mousemove", (e) => {
+  if (mousedown) {
+    rewindAudio(e, AUDIO_SMALL);
+  }
+});
+progressSmall.addEventListener("mousedown", () => (mousedown = true));
+progressSmall.addEventListener("mouseup", () => (mousedown = false));
+
+//-------------------------------------------------------------------
 
 let currentVolume;
 let currentValue;
 let mousedown = false;
-
 //воспроизведение видео
 function playAudio(track, btnPlay) {
   if (track.paused) {
@@ -65,7 +107,7 @@ function playAudio(track, btnPlay) {
 //звук видео
 function changeVolume(e, track, btnVolume) {
   track.volume = e.target.value; //регулирование громкости
-//   AUDIO.volume = this.value; //регулирование громкости
+  //   AUDIO.volume = this.value; //регулирование громкости
 
   if (e.target.value === e.target.min) {
     //мьют при отст звука
@@ -75,11 +117,11 @@ function changeVolume(e, track, btnVolume) {
 
 //цвет ползунка звука
 function volumeProgress() {
-    const value = this.value;
-    //   console.log(value);
-    this.style.background = `linear-gradient( to right, #212a43 0%, #212a43 ${
-      value * 100
-    }%, #fff ${value * 100}%, #fff 100% )`;
+  const value = this.value;
+  //   console.log(value);
+  this.style.background = `linear-gradient( to right, #212a43 0%, #212a43 ${
+    value * 100
+  }%, #fff ${value * 100}%, #fff 100% )`;
 }
 
 //кнопка звука
@@ -96,7 +138,7 @@ function muteVolume(track, btnVolume, volLvl) {
     btnVolume.classList.remove("mute");
     volLvl.value = currentValue;
     volLvl.style.background = `linear-gradient( to right, #212a43 0%, #212a43 ${
-        volLvl.value * 100
+      volLvl.value * 100
     }%, #fff ${volLvl.value * 100}%, #fff 100% )`;
   }
 }
@@ -126,6 +168,4 @@ function rewindAudio(e, track) {
   track.currentTime = rewindTime;
 }
 
-
-
-export { AUDIO, buttonPlay, visibleDuration };
+export { AUDIO, AUDIO_SMALL, buttonPlay, visibleDuration };

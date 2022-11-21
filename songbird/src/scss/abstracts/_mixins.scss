@@ -49,6 +49,11 @@
 
 
 //-------------------media
+@mixin large {
+  @media (max-width: (992px)) { 
+    @content;
+  }
+}
 
 @mixin medium {
   @media (max-width: (768px)) { 
@@ -63,7 +68,7 @@
 }
 
 @mixin extra-small {
-  @media (max-width: (430px)) { 
+  @media (max-width: (360px)) { 
     @content;
   }
 }

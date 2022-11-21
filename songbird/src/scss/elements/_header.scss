@@ -3,12 +3,14 @@
   max-height: 80px;
   height: 100%;
   @include flex-row($justify: center);
+  
 
   .header-items {
     // padding: 20px 0;
     // width: 100%;
     // height: 100%;
     // @include flex-row();
+    border-bottom: 1px solid $colorMainDark;
     .header-item {
     }
 

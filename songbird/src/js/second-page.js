@@ -185,6 +185,7 @@ export {
   currBirdInfo,
   smallPlayer,
   score,
+  failAudio,
   startGame,
   showChosenBird,
   markCurrAnswer,

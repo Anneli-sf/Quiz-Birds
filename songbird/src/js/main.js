@@ -11,7 +11,8 @@ import {
   showChosenBird,
   markCurrAnswer,
   startGame,
-  score
+  score,
+  failAudio
 } from "./second-page";
 import {
   switchToSecondPage,

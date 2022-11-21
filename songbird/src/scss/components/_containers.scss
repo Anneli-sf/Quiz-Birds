@@ -5,8 +5,12 @@
   background-size: cover;
   position: relative;
 
-  @include extra-small {
-    font-size: 14px;
+  @include large {
+    font-size: 20px;
+  }
+
+  @include medium {
+    font-size: 18px;
   }
 
   .body-shadow {

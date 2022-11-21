@@ -16,7 +16,7 @@
     width: 100%;
     height: 100%;
     @include flex-row();
-    border-bottom: 1px solid $colorMainDark;
+    // border-bottom: 1px solid $colorMainDark;
     z-index: 5;
 }
 

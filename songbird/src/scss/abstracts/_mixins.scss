@@ -68,7 +68,7 @@
 }
 
 @mixin extra-small {
-  @media (max-width: (360px)) { 
+  @media (max-width: (400px)) { 
     @content;
   }
 }

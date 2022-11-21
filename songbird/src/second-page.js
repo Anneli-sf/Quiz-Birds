@@ -1,2 +1,2 @@
 import './scss/style.scss';
-import './js/second-page';
+// import './js/second-page';

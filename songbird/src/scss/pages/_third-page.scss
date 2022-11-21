@@ -15,6 +15,7 @@
         //   display: none;
         @include transition();
         @include visible();
+        text-align: center;
 
         &.hidden {
           @include hidden();

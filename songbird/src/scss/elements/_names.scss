@@ -42,8 +42,15 @@ select,
   }
 
   @include small {
+    margin: 0px;
     min-width: 28%;
-    font-size: 1em;
+    font-size: 0.8em;
+  }
+
+  @include extra-small {
+    
+    min-width: 45%;
+
   }
 }
 

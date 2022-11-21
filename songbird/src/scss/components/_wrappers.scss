@@ -18,6 +18,10 @@
     @include flex-row();
     // border-bottom: 1px solid $colorMainDark;
     z-index: 5;
+
+    @include small {
+        padding: 0 0.5rem;
+    }
 }
 
 .main-container {

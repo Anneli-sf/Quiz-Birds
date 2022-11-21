@@ -1,6 +1,5 @@
 import { birdsDataEn } from "./dataBirds";
 import { getTime } from "./helpers";
-import { getRandomValue } from "./helpers";
 import { BTN_NEXT, NAMES_COLL } from "./second-page";
 
 //----------------MAIN PLAYER
@@ -27,8 +26,7 @@ const visibleCurrTimeSmall = document.querySelector("#small-curr-time");
 const visibleDurationSmall = document.querySelector("#small-duration");
 
 const AUDIO_SMALL = new Audio();
-// AUDIO_SMALL.src = birdsDataEn[0][0].audio;
-console.log(AUDIO_SMALL.src);
+// console.log(AUDIO_SMALL.src);
 
 let currentVolume;
 let currentValue;
@@ -102,6 +100,7 @@ progressSmall.addEventListener("mousemove", (e) => {
     rewindAudio(e, AUDIO_SMALL);
   }
 });
+
 progressSmall.addEventListener("mousedown", () => (mousedownSmall = true));
 progressSmall.addEventListener("mouseup", () => (mousedownSmall = false));
 
@@ -121,7 +120,6 @@ function playAudio(track, btnPlay) {
 //звук видео
 function changeVolume(e, track, btnVolume) {
   track.volume = e.target.value; //регулирование громкости
-  //   AUDIO.volume = this.value; //регулирование громкости
 
   if (e.target.value === e.target.min) {
     //мьют при отст звука
@@ -167,7 +165,6 @@ function audioProgress(track, audioProgr, time, btnPlay) {
   if (currProgress == 100) btnPlay.classList.remove("pausebtn");
 
   time.innerHTML = getTime(track.currentTime);
-  //   visibleDuration.innerHTML = getTime(AUDIO.duration);
 
   BTN_NEXT.addEventListener("click", () => {
     audioProgr.style.flexBasis = `0%`;

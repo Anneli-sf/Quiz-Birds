@@ -15,13 +15,11 @@ const SCORE_VALUE = document.querySelector(".nav-input");
 const SECOND_PAGE = document.querySelector("#second-section");
 const BTN_NEXT = document.querySelector("#btn-next");
 const BTNS_LEVEL = document.querySelectorAll(".level-btn");
-const BTN_LEVEL_0 = document.querySelector("#level-0");
 const ALL_LEVELS = document.querySelector(".levels");
 const GUESS_IMAGE = document.querySelector(".question-image");
 const GUESS_NAME = document.querySelector(".question-name");
 const NAMES_COLL = document.querySelectorAll(".answer-name");
 const btnInput = document.querySelectorAll(".input");
-const BIRD_INFO_SECTION = document.querySelector(".answer-description");
 const NAMES = document.querySelector(".show-inputs");
 const smallPlayer = document.querySelector(".small-player-controls");
 
@@ -65,9 +63,6 @@ function setStartStyles() {
     visibleDuration.innerHTML = getTime(AUDIO.duration);
   });
   buttonPlay.classList.remove("pausebtn");
-
-  //   console.log(AUDIO.duration);
-  //   visibleDuration.innerHTML = getTime(AUDIO.duration);
 }
 
 //---------отобразить текущую выбранную птицу
@@ -76,8 +71,7 @@ function showChosenBird(e, currLevel, currBirdNumber) {
   let currId;
   if (currVariant.closest("input")) {
     currId = e.target.id.slice(4);
-    // console.log("curr chosen id", currId);
-    // console.log(currVariantName);
+
     showBirdInfo(currLevel, currId);
     if (currVariant.checked == false) {
       currVariant.checked = true;
@@ -112,7 +106,6 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
       BTN_NEXT.disabled = false;
 
       if (currLevel == 5) {
-        // switchToThirdPage();
         BTN_NEXT.innerHTML = "see the result";
         showScore(score);
       }

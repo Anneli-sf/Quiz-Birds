@@ -3,11 +3,9 @@ import {
   SCORE_INPUT,
   SCORE_VALUE,
   SECOND_PAGE,
-  BTNS_LEVEL_collection,
   startGame,
 } from "./second-page";
 import { showScore, THIRD_PAGE, BTN_PLAY_AGAIN } from "./third-page";
-import { getRandomValue } from "./helpers";
 
 function switchToSecondPage() {
   BTN_PLAY.classList.add("hidden");
@@ -27,9 +25,6 @@ function switchToThirdPage(score) {
   BTN_PLAY_AGAIN.classList.remove("hidden");
 
   showScore(score);
-  //   if ((score = 30)) {
-  //     BTN_PLAY_AGAIN.classList.add("hidden");
-  //   }
 }
 
 function switchToStartPage() {
@@ -37,7 +32,6 @@ function switchToStartPage() {
   FIRST_PAGE.classList.remove("hidden");
   THIRD_PAGE.classList.remove("visible");
   startGame();
-//   SCORE_VALUE.value = 0;
 }
 
 export { switchToSecondPage, switchToThirdPage, switchToStartPage };

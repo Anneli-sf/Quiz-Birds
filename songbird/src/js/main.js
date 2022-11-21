@@ -12,7 +12,8 @@ import {
   markCurrAnswer,
   startGame,
   score,
-  failAudio
+  failAudio,
+  winAudio
 } from "./second-page";
 import {
   switchToSecondPage,
@@ -26,8 +27,6 @@ import { AUDIO } from "./player";
 
 let currLevel = 0;
 let currBirdNumber = 0;
-// let counter = 0;
-// let score = 0;
 
 BTN_NEXT.addEventListener("click", () => {
   if (currLevel == 5) {
@@ -65,5 +64,5 @@ function setBirdAndLevel() {
           item.innerHTML = `${birdsDataEn[currLevel][index].name}`;
         });
     }
-    console.log("загаданная птица", currBirdNumber);
+    // console.log("загаданная птица", currBirdNumber);
 }

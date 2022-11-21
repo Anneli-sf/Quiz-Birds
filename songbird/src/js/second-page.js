@@ -1,5 +1,12 @@
 import { birdsDataEn } from "./dataBirds";
-import { AUDIO, AUDIO_SMALL, buttonPlay, buttonPlaySmall, visibleDuration, visibleDurationSmall } from "./player";
+import {
+  AUDIO,
+  AUDIO_SMALL,
+  buttonPlay,
+  buttonPlaySmall,
+  visibleDuration,
+  visibleDurationSmall,
+} from "./player";
 import { BTN_PLAY_AGAIN, showScore } from "./third-page";
 import { getTime } from "./helpers";
 
@@ -28,7 +35,7 @@ let score = 0;
 const winAudio = new Audio();
 const failAudio = new Audio();
 winAudio.src = "../assets/sound/win.mp3";
-failAudio.src = "../assets/sound/fail.mp3";
+failAudio.src = "../assets/sound/fail1.mp3";
 
 //-----написание адреса картинки  GUESS_IMAGE.style.backgroundImage = `url("${birdsDataEn[0][0].image}")`;
 
@@ -54,13 +61,13 @@ function setStartStyles() {
   BTN_NEXT.disabled = true;
   BTN_NEXT.innerHTML = "next level";
 
-  AUDIO.addEventListener('loadedmetadata', ()=>{
+  AUDIO.addEventListener("loadedmetadata", () => {
     visibleDuration.innerHTML = getTime(AUDIO.duration);
   });
   buttonPlay.classList.remove("pausebtn");
-    
-//   console.log(AUDIO.duration);
-//   visibleDuration.innerHTML = getTime(AUDIO.duration);  
+
+  //   console.log(AUDIO.duration);
+  //   visibleDuration.innerHTML = getTime(AUDIO.duration);
 }
 
 //---------отобразить текущую выбранную птицу
@@ -93,12 +100,14 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
     // console.log("level", currLevel);
     // console.log("BirdNumber", currBirdNumber);
     if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
+      if (!currVariantName.classList.contains("true")) {
+        showCurrScore(counter);
+      }
       currVariantName.classList.add("true");
       AUDIO.pause();
       buttonPlay.classList.remove("pausebtn");
       winAudio.play();
       showGuessedBird(currBirdNumber, currLevel);
-      showCurrScore(counter);
       counter = 0;
       BTN_NEXT.disabled = false;
 
@@ -150,7 +159,6 @@ function showGuessedBird(currBirdNumber, currLevel) {
 
 //----------------отобразить инфо о птице
 function showBirdInfo(currLevel, currId) {
-  
   currBirdName.classList.remove("hidden");
   currBirdSpecies.classList.remove("hidden");
   smallPlayer.classList.remove("hidden");
@@ -161,12 +169,11 @@ function showBirdInfo(currLevel, currId) {
   currBirdSpecies.innerHTML = `${birdsDataEn[currLevel][currId - 1].species}`;
   currBirdInfo.innerHTML = `${birdsDataEn[currLevel][currId - 1].description}`;
 
-  buttonPlaySmall.classList.remove("pausebtn");  
+  buttonPlaySmall.classList.remove("pausebtn");
   AUDIO_SMALL.src = birdsDataEn[currLevel][currId - 1].audio;
-  AUDIO_SMALL.addEventListener('loadedmetadata', ()=>{
+  AUDIO_SMALL.addEventListener("loadedmetadata", () => {
     visibleDurationSmall.innerHTML = getTime(AUDIO_SMALL.duration);
   });
-
 }
 
 export {
@@ -186,6 +193,7 @@ export {
   smallPlayer,
   score,
   failAudio,
+  winAudio,
   startGame,
   showChosenBird,
   markCurrAnswer,

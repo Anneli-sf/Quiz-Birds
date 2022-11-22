@@ -7,6 +7,7 @@ import {
   showChosenBird,
   startGame,
   score,
+  counter
 } from "./second-page";
 import {
   switchToSecondPage,
@@ -17,11 +18,14 @@ import { BTN_PLAY_AGAIN } from "./third-page";
 import { getRandomValue } from "./helpers";
 import { birdsDataEn } from "./dataBirds";
 import { AUDIO } from "./player";
+import { failAudio } from "./second-page";
+
 
 let currLevel = 0;
 let currBirdNumber = 0;
 
 BTN_NEXT.addEventListener("click", () => {
+ 
   if (currLevel == 5) {
     switchToThirdPage(score);
   }
@@ -43,10 +47,12 @@ BTN_PLAY_AGAIN.addEventListener("click", () => {
 });
 
 //-----------клик по вариантам названий птиц
-NAMES.addEventListener("click", (e) => {
-  showChosenBird(e, currLevel, currBirdNumber);
-  //   console.log(score);
-});
+
+    NAMES.addEventListener("click", (e) => {
+        showChosenBird(e, currLevel, currBirdNumber);
+      });
+
+
 
 function setBirdAndLevel() {
   if (currLevel < 6) {

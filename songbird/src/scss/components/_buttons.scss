@@ -1,10 +1,6 @@
 .button {
-  // margin: 1.25rem;
-  // max-width: 130px;
   max-width: 8.2rem;
   max-height: 3rem;
-  // width: 100%;
-  // max-height: 40px;
   height: 100%;
   padding: 0.6rem 1rem;
 
@@ -26,8 +22,6 @@
   &.hidden {
     opacity: 0;
     z-index: -10;
-    // display: none;
-    // @include transition-800();
   }
 
   &:hover:enabled,
@@ -53,8 +47,6 @@
     @include transition-400();
   }
 
-
-
   &:after,
   &.active:after {
     right: inherit;
@@ -74,7 +66,6 @@
 
 .header-btn {
   border-radius: 5px;
-  // width: 0px;
 }
 
 .level-btn {
@@ -92,12 +83,6 @@
   @include small {
     font-size: 0.9em;
   }
-
-  
-
-  // @include large {
-  //   padding: 0.6rem 0.5rem;
-  // }
 }
 
 .level-item-btn:first-child {
@@ -121,7 +106,6 @@
     opacity: 0.5;
   }
 }
-
 
 .new-level {
   width: 30rem;

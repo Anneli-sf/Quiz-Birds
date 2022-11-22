@@ -5,8 +5,6 @@
   opacity: 0.5;
   z-index: 5;
 
-  // transform: rotate(60deg);
-  // animation: flying 60s;
   animation-iteration-count: 10;
   @include transition();
 }
@@ -172,20 +170,21 @@
 }
 
 .note-lilac {
-    top: 0%;
+  top: 0%;
+  left: 90%;
+  animation: note-lilac 50s alternate;
+  animation-iteration-count: 10;
+  filter: invert(23%) sepia(78%) saturate(2352%) hue-rotate(251deg)
+    brightness(82%) contrast(87%);
+}
+
+@keyframes note-lilac {
+  0% {
     left: 90%;
-    animation: note-lilac 50s alternate;
-    animation-iteration-count: 10;
-    filter: invert(23%) sepia(78%) saturate(2352%) hue-rotate(251deg) brightness(82%) contrast(87%);
+    top: 0%;
   }
-  
-  @keyframes note-lilac {
-    0% {
-      left: 90%;
-      top: 0%;
-    }
-    100% {
-      left: 90%;
-      top: 100%;
-    }
+  100% {
+    left: 90%;
+    top: 100%;
   }
+}

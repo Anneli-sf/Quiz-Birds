@@ -89,6 +89,10 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
   if (currVariant.closest("label")) {
     currId = currVariant.id.slice(6);
     counter++;
+    BTN_NEXT.addEventListener("click", () => {
+      counter = 0;
+    });
+
     // console.log(counter);
     // console.log("curr name chosen id", currId);
     // console.log("level", currLevel);
@@ -96,20 +100,23 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
     if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
       if (!currVariantName.classList.contains("true")) {
         showCurrScore(counter);
+        console.log("counter", counter);
+        currVariantName.classList.add("true");
+        AUDIO.pause();
+        buttonPlay.classList.remove("pausebtn");
+        winAudio.play();
+        showGuessedBird(currBirdNumber, currLevel);
+        counter = 0;
+        console.log("counter", counter);
+        BTN_NEXT.disabled = false;
       }
-      currVariantName.classList.add("true");
-      AUDIO.pause();
-      buttonPlay.classList.remove("pausebtn");
-      winAudio.play();
-      showGuessedBird(currBirdNumber, currLevel);
-      counter = 0;
-      BTN_NEXT.disabled = false;
 
       if (currLevel == 5) {
         BTN_NEXT.innerHTML = "see the result";
         showScore(score);
       }
     } else {
+      // counter++;
       currVariantName.classList.add("false");
       failAudio.play();
     }
@@ -187,6 +194,7 @@ export {
   score,
   failAudio,
   winAudio,
+  counter,
   startGame,
   showChosenBird,
   markCurrAnswer,

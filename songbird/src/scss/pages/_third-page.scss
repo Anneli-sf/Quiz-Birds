@@ -12,7 +12,6 @@
 
     .finish-score {
         color: $colorMainDark;
-        //   display: none;
         @include transition();
         @include visible();
         text-align: center;

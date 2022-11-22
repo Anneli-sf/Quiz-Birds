@@ -17,9 +17,6 @@ select,
   flex-direction: column;
   flex-wrap: wrap;
   align-items: flex-start;
-  // columns: 2;
-  // column-gap: 40px;
-  // max-height: 160px;
   cursor: pointer;
 
   @include medium {

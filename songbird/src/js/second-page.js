@@ -114,7 +114,6 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
         counter = 0;
         // console.log("counter", counter);
         BTN_NEXT.disabled = false;
-        NAMES.removeEventListener("click", clickOnName);
       }
 
       if (currLevel == 5) {

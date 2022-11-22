@@ -7,7 +7,7 @@ import {
   showChosenBird,
   startGame,
   score,
-  counter
+  counter,
 } from "./second-page";
 import {
   switchToSecondPage,
@@ -20,12 +20,10 @@ import { birdsDataEn } from "./dataBirds";
 import { AUDIO } from "./player";
 import { failAudio } from "./second-page";
 
-
 let currLevel = 0;
 let currBirdNumber = 0;
 
 BTN_NEXT.addEventListener("click", () => {
- 
   if (currLevel == 5) {
     switchToThirdPage(score);
   }
@@ -48,13 +46,10 @@ BTN_PLAY_AGAIN.addEventListener("click", () => {
 
 //-----------клик по вариантам названий птиц
 let clickOnName = (e) => {
-    showChosenBird(e, currLevel, currBirdNumber);
-  }   
+  showChosenBird(e, currLevel, currBirdNumber);
+};
 
-    NAMES.addEventListener("click", clickOnName);
-
-  
-
+NAMES.addEventListener("click", clickOnName);
 
 function setBirdAndLevel() {
   if (currLevel < 6) {
@@ -68,4 +63,4 @@ function setBirdAndLevel() {
   // console.log("загаданная птица", currBirdNumber);
 }
 
-export {clickOnName};
+export { clickOnName };

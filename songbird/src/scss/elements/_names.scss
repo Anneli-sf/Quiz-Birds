@@ -134,6 +134,11 @@ input[type="checkbox"]:checked + label:after {
 
   &.true {
     font-weight: 700;
+
+    input[type="checkbox"]:checked,
+input[type="checkbox"]:not(:checked) {
+  pointer-events: none;
+}
   }
 }
 

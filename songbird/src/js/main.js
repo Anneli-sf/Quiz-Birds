@@ -47,11 +47,13 @@ BTN_PLAY_AGAIN.addEventListener("click", () => {
 });
 
 //-----------клик по вариантам названий птиц
+let clickOnName = (e) => {
+    showChosenBird(e, currLevel, currBirdNumber);
+  }   
 
-    NAMES.addEventListener("click", (e) => {
-        showChosenBird(e, currLevel, currBirdNumber);
-      });
+    NAMES.addEventListener("click", clickOnName);
 
+  
 
 
 function setBirdAndLevel() {
@@ -65,3 +67,5 @@ function setBirdAndLevel() {
   }
   // console.log("загаданная птица", currBirdNumber);
 }
+
+export {clickOnName};

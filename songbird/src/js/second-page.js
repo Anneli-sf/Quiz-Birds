@@ -9,6 +9,7 @@ import {
 } from "./player";
 import { BTN_PLAY_AGAIN, showScore } from "./third-page";
 import { getTime } from "./helpers";
+import {clickOnName} from "./main";
 
 const SCORE_INPUT = document.querySelector(".nav-score");
 const SCORE_VALUE = document.querySelector(".nav-input");
@@ -66,6 +67,8 @@ function setStartStyles() {
 }
 
 //---------отобразить текущую выбранную птицу
+ 
+
 function showChosenBird(e, currLevel, currBirdNumber) {
   let currVariant = e.target;
   let currId;
@@ -78,6 +81,7 @@ function showChosenBird(e, currLevel, currBirdNumber) {
     }
   }
   markCurrAnswer(currVariant, currLevel, currBirdNumber);
+
 }
 
 //-------подсветка верного-неверного ответа
@@ -97,18 +101,20 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
     // console.log("curr name chosen id", currId);
     // console.log("level", currLevel);
     // console.log("BirdNumber", currBirdNumber);
+
     if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
       if (!currVariantName.classList.contains("true")) {
         showCurrScore(counter);
-        console.log("counter", counter);
+        // console.log("counter", counter);
         currVariantName.classList.add("true");
         AUDIO.pause();
         buttonPlay.classList.remove("pausebtn");
         winAudio.play();
         showGuessedBird(currBirdNumber, currLevel);
         counter = 0;
-        console.log("counter", counter);
+        // console.log("counter", counter);
         BTN_NEXT.disabled = false;
+        NAMES.removeEventListener("click", clickOnName);
       }
 
       if (currLevel == 5) {
@@ -116,7 +122,6 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
         showScore(score);
       }
     } else {
-      // counter++;
       currVariantName.classList.add("false");
       failAudio.play();
     }
@@ -150,6 +155,8 @@ function showCurrScore(counter) {
   //   console.log(score);
   SCORE_VALUE.value = score;
 }
+
+
 
 //----------------отобразить угаданную птицу
 function showGuessedBird(currBirdNumber, currLevel) {

@@ -97,11 +97,6 @@ function markCurrAnswer(currVariant, currLevel, currBirdNumber) {
       counter = 0;
     });
 
-    // console.log(counter);
-    // console.log("curr name chosen id", currId);
-    // console.log("level", currLevel);
-    // console.log("BirdNumber", currBirdNumber);
-
     if (currId == birdsDataEn[currLevel][currBirdNumber].id) {
       if (!currVariantName.classList.contains("true")) {
         showCurrScore(counter);
